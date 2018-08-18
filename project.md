@@ -17,18 +17,18 @@ graph: true
 preprocess: false
 ---
 
-## Brief description
+# Brief description
 
 This is a Fortran interface to the [METIS software package](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview) 
 for partitioning unstructured graphs, partitioning meshes, and computing fill-reducing orderings
 of sparse matrices. The interface makes use of the C interoperability features available in modern Fortran 
-(i.e., Fortran 2003+) and provides a simple and safe way to call the original routines.
+(i.e., Fortran 2003+) and provides a simple and safe way to call the original serial routines.
 
-## License
+# License
 
 
 
-## Further information
+# Further information
 
-* [METIS home page](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview)
+* [METIS Home page](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview)
 * [METIS Manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf) (PDF)

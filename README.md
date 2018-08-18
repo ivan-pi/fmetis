@@ -7,8 +7,7 @@ A modern Fortran interface to the METIS graph partitioning library
 
 This is a Fortran interface to the [METIS software package](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview) 
 for partitioning unstructured graphs, partitioning meshes, and computing fill-reducing orderings
-of sparse matrices. The interface makes use of the C interoperability features available in modern Fortran 
-(i.e., Fortran 2003+) and provides a simple and safe way to call the original routines.
+of sparse matrices. The interface makes use of the C interoperability features available in modern Fortran (i.e., Fortran 2003+) and provides a simple and safe way to call the original routines.
 
 ## METIS API
 
@@ -39,11 +38,11 @@ ierr = METIS_Free(ptr)
 
 ## Object-oriented API
 
-The object-oriented API is under development.
+The object-oriented API is currently under development.
 
 # Examples
 
-Examples will be provided soon.
+Examples of METIS usage from Fortran will be provided soon.
 
 # Compiling
 

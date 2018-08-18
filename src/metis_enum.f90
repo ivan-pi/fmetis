@@ -48,7 +48,7 @@ module metis_enum
 
     ! Coarsening Schemes
     integer, parameter :: METIS_CTYPE_RM   = 0 !! Random matching.
-    integer, parameter :: METIS_CTYPE_SHEM = 1 !! sorted heavy-edge matching.
+    integer, parameter :: METIS_CTYPE_SHEM = 1 !! Sorted heavy-edge matching.
 
     ! Initial partitioning schemes
     integer, parameter :: METIS_IPTYPE_GROW    = 0 !! Grows a bisection using a greedy strategy.

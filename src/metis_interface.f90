@@ -502,14 +502,34 @@ module metis_interface
 !*****************************************************************************************
 !> Initializes the options array into its default values.
 !
-!# Example
-!
+!@note
+! The passed array `options` must have the size `METIS_NOPTIONS` (40).
+! To be able to use the parameters in the [[metis_enum]] module it is recommended to use
+! zero-based indexing for the options array: 
 !```Fortran
-! integer :: opts(0:39)
+!integer(c_int) :: opts(0:39)
+!```
+!@endnote
+!
+!# Examples
+! To set Fortran style index-numbering use:
+!```Fortran
+!integer :: opts(0:39)
 ! 
-! call METIS_SetDefaultOptions(opts)
-! opts(18) = 1 ! Fortran-style index numbering
-!```   
+!call METIS_SetDefaultOptions(opts)
+!opts(17) = 1 ! Fortran-style index numbering
+!```
+!
+! Other options can be changed using parameters from the [[metis_enum]] module.
+!```Fortran
+!use metis_interface, only : METIS_SetDefaultOptions
+!use metis_enum, only : METIS_OPTION_DBGLVL, METIS_DBG_INFO
+!integer :: opts(0:39)
+! 
+!call METIS_SetDefaultOptions(opts)
+!opts(METIS_OPTION_DBGLVL) = METIS_DBG_INFO ! Show various diagnostic messages
+!end
+!```
         function METIS_SetDefaultOptions(options) result(ierr) bind(C,name="METIS_SetDefaultOptions")
             import c_int, METIS_NOPTIONS
             
