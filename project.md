@@ -1,7 +1,7 @@
 ---
 project: Fortran METIS Interface
 src_dir: ./src
-output_dir: ./doc
+output_dir: ./docs
 project_github: https://github.com/ivan-pi/fmetis
 author: Ivan Pribec
 summary: Fortran METIS Interface
@@ -31,4 +31,4 @@ of sparse matrices. The interface makes use of the C interoperability features a
 # Further information
 
 * [METIS Home page](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview)
-* [METIS Manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf) (PDF)
+* [METIS Manual (PDF)](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf)

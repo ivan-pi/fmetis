@@ -1,17 +1,12 @@
-Fortran METIS Interface
-=======================
+# Fortran METIS Interface
 
-A modern Fortran interface to the METIS graph partitioning library
+## Brief description
 
-# Brief description
+This package provides a Fortran interface to the [METIS software package](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview) for partitioning unstructured graphs, partitioning meshes, and computing fill-reducing orderings of sparse matrices. The interface makes use of the C interoperability features available in modern Fortran (i.e., Fortran 2003+) and provides a simple and safe way to call the original routines.
 
-This is a Fortran interface to the [METIS software package](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview) 
-for partitioning unstructured graphs, partitioning meshes, and computing fill-reducing orderings
-of sparse matrices. The interface makes use of the C interoperability features available in modern Fortran (i.e., Fortran 2003+) and provides a simple and safe way to call the original routines.
+### METIS API
 
-## METIS API
-
-Example calls of the Fortran versions for the core METIS library routines:
+Examples of calls to the Fortran versions of the core METIS library routines:
 
 ```Fortran
 ! All functions return an integer status flag ierr
@@ -36,20 +31,22 @@ ierr = METIS_SetDefaultOptions(options)
 ierr = METIS_Free(ptr)
 ```
 
-## Object-oriented API
+### Object-oriented API
 
 The object-oriented API is currently under development.
 
-# Examples
+## Examples
 
 Examples of METIS usage from Fortran will be provided soon.
 
-# Compiling
+## Compiling
 
 Compile instructions will be provided soon.
 
-# Documentation
+## Documentation
 
-The latest API documentation can be found [here](). The documentation was generated from the source code using [FORD](https://github.com/cmacmackin/ford).
+The latest documentation can be found [here](https://ivan-pi.github.io/fmetis/). The documentation was generated from the source code using [FORD](https://github.com/cmacmackin/ford).
 
-# License
+The original METIS documentation may be downloaded [here (PDF)](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf). More information about METIS can be found on the [original homepage](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview).
+
+## License
