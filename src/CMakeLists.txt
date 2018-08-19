@@ -3,6 +3,7 @@ set(SRC
     metis_interface.f90
     metis_enum.f90
     metis_io.f90
+    metis_oo_interface.f90
 )
 
 set(extern_INCLUDE /usr/local/include)
