@@ -537,7 +537,7 @@ module metis_interface
 ! 
 ! call METIS_MeshToNodal(...,xadj,adjncy)
 ! 
-! ! Deallocation of arrays allocated in C
+! ! xadj and adjncy should be deallocated on the C side! ;)
 ! call METIS_Free(xadj)
 ! call METIS_Free(adjncy)
 !```   
