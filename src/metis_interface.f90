@@ -42,9 +42,9 @@ module metis_interface
 
     interface
 
-        !
-        ! Graph partitioning routines
-        !
+    !
+    ! Graph partitioning routines
+    !
 
 !*****************************************************************************************
 !> This function is used to partition a graph into `nparts` parts using recursive bisection.
@@ -59,49 +59,49 @@ module metis_interface
 !  `METIS_OPTION_SEED`, `METIS_OPTION_UFACTOR`, `METIS_OPTION_NUMBERING`,
 !  `METIS_OPTION_DBGLVL`
 !
-        function METIS_PartGraphRecursive(nvtxs,ncon,xadj,adjncy,&
-            vwgt,vsize,adjwgt,nparts,tpwgts,ubvec,options,objval,part) result(ierr) bind(C,name="METIS_PartGraphRecursive")
-            import c_int, c_double, METIS_NOPTIONS
-            
-            ! Parameters
-            integer(c_int), intent(in) :: nvtxs
-                !! The number of vertices in the graph.
-            integer(c_int), intent(in) :: ncon
-                !! The number of balancing constraints. It should be atleast 1.
-            integer(c_int), intent(in), dimension(*) :: xadj, adjncy
-                !! The adjacency structure of the graph as described in section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
-            integer(c_int), intent(in), dimension(*), optional :: vwgt ! NULL
-                !! The weights of the vertices as described in Section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
-            integer(c_int), intent(in), dimension(*), optional :: vsize ! NULL
-                !! The size of the vertices for computing the total communication volume as described in section 5.7 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
-            integer(c_int), intent(in), dimension(*), optional :: adjwgt ! NULL
-                !! The weights of the edges as describe in Section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
-            integer(c_int) , intent(in) :: nparts
-                !! The number of parts to partition the graph.
-            real(c_double), intent(in), optional :: tpwgts(nparts*ncon)
-                !! An array of size `nparts*ncon` that specifies the desired weight for each partition and constraint.
-                !! If not present, the graph is divided equally among the partitions. More in the description.
-            real(c_double), intent(in), optional :: ubvec(ncon)
-                !! An array of size `ncon` that specifiew the allowed load imbalance for each constraint. 
-                !! For the `i`-th partition and `j`-th constraint the allowed weight is the `ubvec(j)*tpwgts(i*ncon+j)`
-                !! fraction of the `j`-th's constraint total weight. If not present, the load imbalance
-                !! tolerance is 1.001 (for `ncon = 1`) or 1.01 (for `ncon > 1`).
-            integer(c_int), intent(in), optional :: options(METIS_NOPTIONS)
-                !! An array of options as described in Section 5.4 of the METIS manual. See description for valid options.
-            integer(c_int), intent(out) :: objval
-                !! Upon successful completion, this variable stores the edge-cut or the total communication volume of the partitioning
-                !! solution. The value returned depends on the partitioning's objective function.
-            integer(c_int), intent(out) :: part(nvtxs)
-                !! This is a vector of size `nvtxs` that upon successful completion stores the partition vector of the graph.
-                !! The numbering of this vector starts from either 0 or 1, depending on the value of `options(METIS_OPTION_NUMBERING)`.
+    function METIS_PartGraphRecursive(nvtxs,ncon,xadj,adjncy,&
+        vwgt,vsize,adjwgt,nparts,tpwgts,ubvec,options,objval,part) result(ierr) bind(C,name="METIS_PartGraphRecursive")
+        import c_int, c_double, METIS_NOPTIONS
+        
+        ! Parameters
+        integer(c_int), intent(in) :: nvtxs
+            !! The number of vertices in the graph.
+        integer(c_int), intent(in) :: ncon
+            !! The number of balancing constraints. It should be atleast 1.
+        integer(c_int), intent(in), dimension(*) :: xadj, adjncy
+            !! The adjacency structure of the graph as described in section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+        integer(c_int), intent(in), dimension(*), optional :: vwgt ! NULL
+            !! The weights of the vertices as described in Section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+        integer(c_int), intent(in), dimension(*), optional :: vsize ! NULL
+            !! The size of the vertices for computing the total communication volume as described in section 5.7 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+        integer(c_int), intent(in), dimension(*), optional :: adjwgt ! NULL
+            !! The weights of the edges as describe in Section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+        integer(c_int) , intent(in) :: nparts
+            !! The number of parts to partition the graph.
+        real(c_double), intent(in), optional :: tpwgts(nparts*ncon)
+            !! An array of size `nparts*ncon` that specifies the desired weight for each partition and constraint.
+            !! If not present, the graph is divided equally among the partitions. More in the description.
+        real(c_double), intent(in), optional :: ubvec(ncon)
+            !! An array of size `ncon` that specifiew the allowed load imbalance for each constraint. 
+            !! For the `i`-th partition and `j`-th constraint the allowed weight is the `ubvec(j)*tpwgts(i*ncon+j)`
+            !! fraction of the `j`-th's constraint total weight. If not present, the load imbalance
+            !! tolerance is 1.001 (for `ncon = 1`) or 1.01 (for `ncon > 1`).
+        integer(c_int), intent(in), optional :: options(METIS_NOPTIONS)
+            !! An array of options as described in Section 5.4 of the METIS manual. See description for valid options.
+        integer(c_int), intent(out) :: objval
+            !! Upon successful completion, this variable stores the edge-cut or the total communication volume of the partitioning
+            !! solution. The value returned depends on the partitioning's objective function.
+        integer(c_int), intent(out) :: part(nvtxs)
+            !! This is a vector of size `nvtxs` that upon successful completion stores the partition vector of the graph.
+            !! The numbering of this vector starts from either 0 or 1, depending on the value of `options(METIS_OPTION_NUMBERING)`.
 
-            ! Returns
-            integer(c_int) :: ierr
-                !! `METIS_OK` - Indicates that the function returned normally.<br /> 
-                !! `METIS_ERROR_INPUT` - Indicates an input error.<br /> 
-                !! `METIS_ERROR_MEMORY` - Indicates that it could not allocate the required memory.<br /> 
-                !! `METIS_ERROR` - Indicates some other type of error.
-        end function
+        ! Returns
+        integer(c_int) :: ierr
+            !! `METIS_OK` - Indicates that the function returned normally.<br /> 
+            !! `METIS_ERROR_INPUT` - Indicates an input error.<br /> 
+            !! `METIS_ERROR_MEMORY` - Indicates that it could not allocate the required memory.<br /> 
+            !! `METIS_ERROR` - Indicates some other type of error.
+    end function
 !*****************************************************************************************
 
 !*****************************************************************************************
@@ -118,54 +118,54 @@ module metis_interface
 !  `METIS_OPTION_CONTIG`, `METIS_OPTION_SEED`, `METIS_OPTION_NUMBERING`,
 !  `METIS_OPTION_DBGLVL`
 !
-        function METIS_PartGraphKway(nvtxs,ncon,xadj,adjncy,&
-            vwgt,vsize,adjwgt,nparts,tpwgts,ubvec,options,objval,part) result(ierr) bind(C,name="METIS_PartGraphKway")
-            import c_int, c_double, METIS_NOPTIONS
-            
-            ! Parameters
-            integer(c_int), intent(in) :: nvtxs
-                !! The number of vertices in the graph.
-            integer(c_int), intent(in) :: ncon
-                !! The number of balancing constraints. It should be at least 1.
-            integer(c_int), intent(in), dimension(*) :: xadj, adjncy
-                !! The adjacency structure of the graph as described in section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
-            integer(c_int), intent(in), dimension(*), optional :: vwgt
-                !! The weights of the vertices as described in Section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
-            integer(c_int), intent(in), dimension(*), optional :: vsize
-                !! The size of the vertices for computing the total communication volume as described in section 5.7 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
-            integer(c_int), intent(in), dimension(*), optional :: adjwgt
-                !! The weights of the edges as describe in Section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
-            integer(c_int), intent(in) :: nparts
-                !! The number of parts to partition the graph.
-            real(c_double), intent(in), optional :: tpwgts(nparts*ncon)
-                !! An array of size `nparts*ncon` that specifies the desired weight for each partition and constraint.
-                !! If not present, the graph is divided equally among the partitions. More in the description.
-            real(c_double), intent(in), optional :: ubvec(ncon)
-                !! An array of size `ncon` that specifiew the allowed load imbalance for each constraint. 
-                !! For the `i`-th partition and `j`-th constraint the allowed weight is the `ubvec(j)*tpwgts(i*ncon+j)`
-                !! fraction of the `j`-th's constraint total weight. If not present, the load imbalance
-                !! tolerance is 1.001 (for `ncon == 1`) or 1.01 (for `ncon > 1`).
-            integer(c_int), intent(in), optional :: options(METIS_NOPTIONS)
-                !! An array of options as described in Section 5.4 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf). See description for valid options.
-            integer(c_int), intent(out) :: objval
-                !! Upon successful completion, this variable stores the edge-cut or the total communication volume of the partitioning
-                !! solution. The value returned depends on the partitioning's objective function.
-            integer(c_int), intent(out) :: part(nvtxs)
-                !! This is a vector of size `nvtxs` that upon successful completion stores the partition vector of the graph.
-                !! The numbering of this vector starts from either 0 or 1, depending on the value of `options(METIS_OPTION_NUMBERING)`.
-            
-            ! Returns
-            integer(c_int) :: ierr
-                !! `METIS_OK` - Indicates that the function returned normally.<br /> 
-                !! `METIS_ERROR_INPUT` - Indicates an input error.<br /> 
-                !! `METIS_ERROR_MEMORY` - Indicates that it could not allocate the required memory.<br /> 
-                !! `METIS_ERROR` - Indicates some other type of error.
-        end function
+    function METIS_PartGraphKway(nvtxs,ncon,xadj,adjncy,&
+        vwgt,vsize,adjwgt,nparts,tpwgts,ubvec,options,objval,part) result(ierr) bind(C,name="METIS_PartGraphKway")
+        import c_int, c_double, METIS_NOPTIONS
+        
+        ! Parameters
+        integer(c_int), intent(in) :: nvtxs
+            !! The number of vertices in the graph.
+        integer(c_int), intent(in) :: ncon
+            !! The number of balancing constraints. It should be at least 1.
+        integer(c_int), intent(in), dimension(*) :: xadj, adjncy
+            !! The adjacency structure of the graph as described in section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+        integer(c_int), intent(in), dimension(*), optional :: vwgt
+            !! The weights of the vertices as described in Section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+        integer(c_int), intent(in), dimension(*), optional :: vsize
+            !! The size of the vertices for computing the total communication volume as described in section 5.7 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+        integer(c_int), intent(in), dimension(*), optional :: adjwgt
+            !! The weights of the edges as describe in Section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+        integer(c_int), intent(in) :: nparts
+            !! The number of parts to partition the graph.
+        real(c_double), intent(in), optional :: tpwgts(nparts*ncon)
+            !! An array of size `nparts*ncon` that specifies the desired weight for each partition and constraint.
+            !! If not present, the graph is divided equally among the partitions. More in the description.
+        real(c_double), intent(in), optional :: ubvec(ncon)
+            !! An array of size `ncon` that specifiew the allowed load imbalance for each constraint. 
+            !! For the `i`-th partition and `j`-th constraint the allowed weight is the `ubvec(j)*tpwgts(i*ncon+j)`
+            !! fraction of the `j`-th's constraint total weight. If not present, the load imbalance
+            !! tolerance is 1.001 (for `ncon == 1`) or 1.01 (for `ncon > 1`).
+        integer(c_int), intent(in), optional :: options(METIS_NOPTIONS)
+            !! An array of options as described in Section 5.4 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf). See description for valid options.
+        integer(c_int), intent(out) :: objval
+            !! Upon successful completion, this variable stores the edge-cut or the total communication volume of the partitioning
+            !! solution. The value returned depends on the partitioning's objective function.
+        integer(c_int), intent(out) :: part(nvtxs)
+            !! This is a vector of size `nvtxs` that upon successful completion stores the partition vector of the graph.
+            !! The numbering of this vector starts from either 0 or 1, depending on the value of `options(METIS_OPTION_NUMBERING)`.
+        
+        ! Returns
+        integer(c_int) :: ierr
+            !! `METIS_OK` - Indicates that the function returned normally.<br /> 
+            !! `METIS_ERROR_INPUT` - Indicates an input error.<br /> 
+            !! `METIS_ERROR_MEMORY` - Indicates that it could not allocate the required memory.<br /> 
+            !! `METIS_ERROR` - Indicates some other type of error.
+    end function
 !*****************************************************************************************
 
-        !
-        ! Mesh partitioning routines
-        !
+    !
+    ! Mesh partitioning routines
+    !
 
 !*****************************************************************************************
 !> This function is used to partition a mesh into `nparts` parts based on a partitioning of the mesh's dual graph.
@@ -176,51 +176,51 @@ module metis_interface
 !  `METIS_OPTION_NITER`, `METIS_OPTION_SEED`, `METIS_OPTION_UFACTOR`,
 !  `METIS_OPTION_NUMBERING`, `METIS_OPTION_DBGLVL`
 !
-        function METIS_PartMeshDual(ne,nn,eptr,eind,vwgt,vsize,ncommon, &
-            nparts,tpwgts,options,objval,epart,npart) result(ierr) bind(C,name="METIS_PartMeshDual")
-            import c_int, METIS_NOPTIONS
-            integer(c_int), intent(in) :: ne
-                !! The number of elements in the mesh.
-            integer(c_int), intent(in) :: nn
-                !! The number of nodes in the mesh.
-            integer(c_int), intent(in), dimension(*) :: eptr,eind
-                !! The pair of arrays storing the mesh as described in Section 5.6 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
-            integer(c_int), intent(in), optional :: vwgt(ne)
-                !! An array of size `ne` specifying the weights of the elements. If not present,
-                !! all elements have an equal weight.
-            integer(c_int), intent(in), optional :: vsize(ne)
-                !! An array of size `ne` specifying the size of the elements that is used
-                !! for computing the total comunication volume as described in Section 5.7 of the  [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
-                !! If not present, the objective is cut or all elements have an equal size.
-            integer(c_int), intent(in) :: ncommon
-            integer(c_int), intent(in) :: nparts
-                !! The number of parts to partition the mesh.
-            integer(c_int), intent(in), optional :: tpwgts(nparts)
-                !! An array of size `nparts` that specifies the desired weight for each partition. The *target
-                !! partition weight* for the `i`-th partition is specified at `tpwgts(i)` (the numbering for the 
-                !! partitions starts from 0). The sum of the `tpwgts` entries must be 1.0. <br /> If not present, the graph
-                !! is divided equally among the partitions.
-            integer(c_int), intent(in), optional :: options(METIS_NOPTIONS)
-                !! An array of options as described in Section 5.4 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf). See description for valid options.
-            integer(c_int), intent(out) :: objval
-                !! Upon successful completion, this variable stores either the edgecut or the total communication
-                !! volume of the dual graph's partitioning.
-            integer(c_int), intent(out) :: epart(ne)
-                !! A vector of size `ne` that upon successful completion stores the partition vector for the elements
-                !! of the mesh. The numbering of this vector starts from either 0 or 1, depending on the value of
-                !! `options(METIS_OPTION_NUMBERING)`.
-            integer(c_int), intent(out) :: npart(nn)
-                !! A vector of size `nn` that upon successful completion stores the partition vector for the nodes 
-                !! of the mesh. The numbering of this vector starts from either 0 or 1, depending on the value of
-                !! `options(METIS_OPTION_NUMBERING)`.
+    function METIS_PartMeshDual(ne,nn,eptr,eind,vwgt,vsize,ncommon, &
+        nparts,tpwgts,options,objval,epart,npart) result(ierr) bind(C,name="METIS_PartMeshDual")
+        import c_int, METIS_NOPTIONS
+        integer(c_int), intent(in) :: ne
+            !! The number of elements in the mesh.
+        integer(c_int), intent(in) :: nn
+            !! The number of nodes in the mesh.
+        integer(c_int), intent(in), dimension(*) :: eptr,eind
+            !! The pair of arrays storing the mesh as described in Section 5.6 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+        integer(c_int), intent(in), optional :: vwgt(ne)
+            !! An array of size `ne` specifying the weights of the elements. If not present,
+            !! all elements have an equal weight.
+        integer(c_int), intent(in), optional :: vsize(ne)
+            !! An array of size `ne` specifying the size of the elements that is used
+            !! for computing the total comunication volume as described in Section 5.7 of the  [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+            !! If not present, the objective is cut or all elements have an equal size.
+        integer(c_int), intent(in) :: ncommon
+        integer(c_int), intent(in) :: nparts
+            !! The number of parts to partition the mesh.
+        integer(c_int), intent(in), optional :: tpwgts(nparts)
+            !! An array of size `nparts` that specifies the desired weight for each partition. The *target
+            !! partition weight* for the `i`-th partition is specified at `tpwgts(i)` (the numbering for the 
+            !! partitions starts from 0). The sum of the `tpwgts` entries must be 1.0. <br /> If not present, the graph
+            !! is divided equally among the partitions.
+        integer(c_int), intent(in), optional :: options(METIS_NOPTIONS)
+            !! An array of options as described in Section 5.4 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf). See description for valid options.
+        integer(c_int), intent(out) :: objval
+            !! Upon successful completion, this variable stores either the edgecut or the total communication
+            !! volume of the dual graph's partitioning.
+        integer(c_int), intent(out) :: epart(ne)
+            !! A vector of size `ne` that upon successful completion stores the partition vector for the elements
+            !! of the mesh. The numbering of this vector starts from either 0 or 1, depending on the value of
+            !! `options(METIS_OPTION_NUMBERING)`.
+        integer(c_int), intent(out) :: npart(nn)
+            !! A vector of size `nn` that upon successful completion stores the partition vector for the nodes 
+            !! of the mesh. The numbering of this vector starts from either 0 or 1, depending on the value of
+            !! `options(METIS_OPTION_NUMBERING)`.
 
-            ! Returns
-            integer(c_int) :: ierr
-                !! `METIS_OK` - Indicates that the function returned normally.<br /> 
-                !! `METIS_ERROR_INPUT` - Indicates an input error.<br /> 
-                !! `METIS_ERROR_MEMORY` - Indicates that it could not allocate the required memory.<br /> 
-                !! `METIS_ERROR` - Indicates some other type of error.
-        end function
+        ! Returns
+        integer(c_int) :: ierr
+            !! `METIS_OK` - Indicates that the function returned normally.<br /> 
+            !! `METIS_ERROR_INPUT` - Indicates an input error.<br /> 
+            !! `METIS_ERROR_MEMORY` - Indicates that it could not allocate the required memory.<br /> 
+            !! `METIS_ERROR` - Indicates some other type of error.
+    end function
 !*****************************************************************************************
 
 !*****************************************************************************************
@@ -233,54 +233,54 @@ module metis_interface
 !  `METIS_OPTION_NITER`, `METIS_OPTION_SEED`, `METIS_OPTION_UFACTOR`,
 !  `METIS_OPTION_NUMBERING`, `METIS_OPTION_DBGLVL`
 !
-        function METIS_PartMeshNodal(ne,nn,eptr,eind,vwgt,vsize, &
-            nparts,tpwgts,options,objval,epart,npart) result(ierr) bind(C,name="METIS_PartMeshNodal")
-            import c_int, METIS_NOPTIONS
-            integer(c_int), intent(in) :: ne
-                !! The number of elements in the mesh.
-            integer(c_int), intent(in) :: nn
-                !! The number of nodes in the mesh.
-            integer(c_int), intent(in), dimension(*) :: eptr,eind
-                !! The pair of arrays storing the mesh as described in Section 5.6 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
-            integer(c_int), intent(in), optional :: vwgt(nn)
-                !! An array of size `nn` specifying weights of the nodes. If not passed, all nodes have an equal weight.
-            integer(c_int), intent(in), optional :: vsize(nn)
-                !! An array of size `nn` specifying the size of the nodes that is used for computing the
-                !! total comunication volume as described in Section 5.7 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf). If not passed,
-                !! the objective is cut or all nodes have an equal size.
-            integer(c_int), intent(in) :: nparts
-                !! The number of parts to partition the mesh.
-            integer(c_int), intent(in), optional :: tpwgts(nparts)
-                !! An array of size `nparts` that specifies the desired weight for each partition. The *target
-                !! partition weight* for the `i`-th partition is specified at `tpwgts(i)` (the numbering for the 
-                !! partitions starts from 0). The sum of the `tpwgts` entries must be 1.0. If not passed, the graph
-                !! is divided equally among the partitions.
-            integer(c_int), intent(in), optional :: options(METIS_NOPTIONS)
-                !! An array of options as described in Section 5.4 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf). See description for valid options.
-            integer(c_int), intent(out) :: objval
-                !! Upon successful completion, this variable stores either the edgecut or the total communication
-                !! volume of the nodal graph's partitioning.
-            integer(c_int), intent(out) :: epart(ne)
-                !! A vector of size `ne` that upon successful completion stores the partition vector for the elements
-                !! of the mesh. The numbering of this vector starts from either 0 or 1, depending on the value of
-                !! `options(METIS_OPTION_NUMBERING)`.
-            integer(c_int), intent(out) :: npart(nn)
-                !! A vector of size `nn` that upon successful completion stores the partition vector for the nodes 
-                !! of the mesh. The numbering of this vector starts from either 0 or 1, depending on the value of
-                !! `options(METIS_OPTION_NUMBERING)`.
+    function METIS_PartMeshNodal(ne,nn,eptr,eind,vwgt,vsize, &
+        nparts,tpwgts,options,objval,epart,npart) result(ierr) bind(C,name="METIS_PartMeshNodal")
+        import c_int, METIS_NOPTIONS
+        integer(c_int), intent(in) :: ne
+            !! The number of elements in the mesh.
+        integer(c_int), intent(in) :: nn
+            !! The number of nodes in the mesh.
+        integer(c_int), intent(in), dimension(*) :: eptr,eind
+            !! The pair of arrays storing the mesh as described in Section 5.6 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+        integer(c_int), intent(in), optional :: vwgt(nn)
+            !! An array of size `nn` specifying weights of the nodes. If not passed, all nodes have an equal weight.
+        integer(c_int), intent(in), optional :: vsize(nn)
+            !! An array of size `nn` specifying the size of the nodes that is used for computing the
+            !! total comunication volume as described in Section 5.7 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf). If not passed,
+            !! the objective is cut or all nodes have an equal size.
+        integer(c_int), intent(in) :: nparts
+            !! The number of parts to partition the mesh.
+        integer(c_int), intent(in), optional :: tpwgts(nparts)
+            !! An array of size `nparts` that specifies the desired weight for each partition. The *target
+            !! partition weight* for the `i`-th partition is specified at `tpwgts(i)` (the numbering for the 
+            !! partitions starts from 0). The sum of the `tpwgts` entries must be 1.0. If not passed, the graph
+            !! is divided equally among the partitions.
+        integer(c_int), intent(in), optional :: options(METIS_NOPTIONS)
+            !! An array of options as described in Section 5.4 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf). See description for valid options.
+        integer(c_int), intent(out) :: objval
+            !! Upon successful completion, this variable stores either the edgecut or the total communication
+            !! volume of the nodal graph's partitioning.
+        integer(c_int), intent(out) :: epart(ne)
+            !! A vector of size `ne` that upon successful completion stores the partition vector for the elements
+            !! of the mesh. The numbering of this vector starts from either 0 or 1, depending on the value of
+            !! `options(METIS_OPTION_NUMBERING)`.
+        integer(c_int), intent(out) :: npart(nn)
+            !! A vector of size `nn` that upon successful completion stores the partition vector for the nodes 
+            !! of the mesh. The numbering of this vector starts from either 0 or 1, depending on the value of
+            !! `options(METIS_OPTION_NUMBERING)`.
 
-            ! Returns
-            integer(c_int) :: ierr
-                !! `METIS_OK` - Indicates that the function returned normally.<br /> 
-                !! `METIS_ERROR_INPUT` - Indicates an input error.<br /> 
-                !! `METIS_ERROR_MEMORY` - Indicates that it could not allocate the required memory.<br /> 
-                !! `METIS_ERROR` - Indicates some other type of error.
-        end function
+        ! Returns
+        integer(c_int) :: ierr
+            !! `METIS_OK` - Indicates that the function returned normally.<br /> 
+            !! `METIS_ERROR_INPUT` - Indicates an input error.<br /> 
+            !! `METIS_ERROR_MEMORY` - Indicates that it could not allocate the required memory.<br /> 
+            !! `METIS_ERROR` - Indicates some other type of error.
+    end function
 !*****************************************************************************************
 
-        !
-        ! Sparse Matrix Reordering Routines
-        !
+    !
+    ! Sparse Matrix Reordering Routines
+    !
 
 !*****************************************************************************************
 !> This function computes fill reducing orderings of sparse matrices using the
@@ -320,34 +320,34 @@ module metis_interface
 !ierr = METIS_NodeND(n,xadj,adjncy,options=options,perm=perm,iperm=iperm)
 !end
 !```
-        function METIS_NodeND(nvtxs,xadj,adjncy,vwgt,options,perm,iperm) result(ierr) bind(C,name="METIS_NodeND")
-            import c_int, METIS_NOPTIONS
+    function METIS_NodeND(nvtxs,xadj,adjncy,vwgt,options,perm,iperm) result(ierr) bind(C,name="METIS_NodeND")
+        import c_int, METIS_NOPTIONS
 
-            ! Parameters
-            integer(c_int), intent(in) :: nvtxs
-                !! The number of vertices in the graph.
-            integer(c_int), intent(in), dimension(*) :: xadj, adjncy
-                !! The adjacency structure of the graph as described in Section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
-            integer(c_int), intent(in), optional :: vwgt(nvtxs)
-                !! An array of size `nvtxs` specifying the weights of the vertices.
-            integer(c_int), intent(in), optional :: options(METIS_NOPTIONS)
-                !! This is the array of options as described in Section 5.4 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf). See description for valid options.
-            integer(c_int), intent(out) :: perm(nvtxs), iperm(nvtxs)
-                !! Vectors of size `nvtxs`. Upon successful completion, they store the fill-reducing
-                !! permutation and inverse-permutation. More in the description.
+        ! Parameters
+        integer(c_int), intent(in) :: nvtxs
+            !! The number of vertices in the graph.
+        integer(c_int), intent(in), dimension(*) :: xadj, adjncy
+            !! The adjacency structure of the graph as described in Section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+        integer(c_int), intent(in), optional :: vwgt(nvtxs)
+            !! An array of size `nvtxs` specifying the weights of the vertices.
+        integer(c_int), intent(in), optional :: options(METIS_NOPTIONS)
+            !! This is the array of options as described in Section 5.4 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf). See description for valid options.
+        integer(c_int), intent(out) :: perm(nvtxs), iperm(nvtxs)
+            !! Vectors of size `nvtxs`. Upon successful completion, they store the fill-reducing
+            !! permutation and inverse-permutation. More in the description.
 
-            ! Returns
-            integer(c_int) :: ierr
-                !! `METIS_OK` - Indicates that the function returned normally.<br /> 
-                !! `METIS_ERROR_INPUT` - Indicates an input error.<br /> 
-                !! `METIS_ERROR_MEMORY` - Indicates that it could not allocate the required memory.<br /> 
-                !! `METIS_ERROR` - Indicates some other type of error.
-        end function
+        ! Returns
+        integer(c_int) :: ierr
+            !! `METIS_OK` - Indicates that the function returned normally.<br /> 
+            !! `METIS_ERROR_INPUT` - Indicates an input error.<br /> 
+            !! `METIS_ERROR_MEMORY` - Indicates that it could not allocate the required memory.<br /> 
+            !! `METIS_ERROR` - Indicates some other type of error.
+    end function
 !*****************************************************************************************
 
-        !
-        ! Mesh-to-graph conversion routines
-        !
+    !
+    ! Mesh-to-graph conversion routines
+    !
 
 !*****************************************************************************************
 !> This function is used to generate the dual graph of a mesh.
@@ -393,35 +393,35 @@ module metis_interface
 !call METIS_Free(adjncy)
 !end
 !```
-        function METIS_MeshToDual(ne,nn,eptr,eind,ncommon,numflag,xadj,adjncy) result(ierr) bind(C,name="METIS_MeshToDual")
-            import c_int, c_ptr
-            
-            ! Parameters
-            integer(c_int), intent(in) :: ne
-                !! The number of elements in the mesh.
-            integer(c_int), intent(in) :: nn
-                !! The number of nodes in the mesh.
-            integer(c_int), intent(in), dimension(*) :: eptr, eind
-                !! The pair of arrays storing the mesh as described in Section 5.6 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
-            integer(c_int), intent(in) :: ncommon
-                !! The number of common nodes that two elements must have in order to put
-                !! an edge between them in the dual graph.
-            integer(c_int), intent(in) :: numflag
-                !! Used to indicate which numbering scheme is used for `eptr` and `eind`. 
-                !! The possible values are: <br />
-                !! 0 - C-style numbering is assumed that starts from 0 <br />
-                !! 1 - Fortran-style numbering is assumed that starts from 1
-            type(c_ptr), intent(out) :: xadj, adjncy
-                !! These arrays store the adjacency structure of the generated dual graph. 
-                !! The format of the adjacency structure is described in Section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+    function METIS_MeshToDual(ne,nn,eptr,eind,ncommon,numflag,xadj,adjncy) result(ierr) bind(C,name="METIS_MeshToDual")
+        import c_int, c_ptr
+        
+        ! Parameters
+        integer(c_int), intent(in) :: ne
+            !! The number of elements in the mesh.
+        integer(c_int), intent(in) :: nn
+            !! The number of nodes in the mesh.
+        integer(c_int), intent(in), dimension(*) :: eptr, eind
+            !! The pair of arrays storing the mesh as described in Section 5.6 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+        integer(c_int), intent(in) :: ncommon
+            !! The number of common nodes that two elements must have in order to put
+            !! an edge between them in the dual graph.
+        integer(c_int), intent(in) :: numflag
+            !! Used to indicate which numbering scheme is used for `eptr` and `eind`. 
+            !! The possible values are: <br />
+            !! 0 - C-style numbering is assumed that starts from 0 <br />
+            !! 1 - Fortran-style numbering is assumed that starts from 1
+        type(c_ptr), intent(out) :: xadj, adjncy
+            !! These arrays store the adjacency structure of the generated dual graph. 
+            !! The format of the adjacency structure is described in Section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
 
-            ! Returns
-            integer(c_int) :: ierr
-                !! `METIS_OK` - Indicates that the function returned normally.<br /> 
-                !! `METIS_ERROR_INPUT` - Indicates an input error.<br /> 
-                !! `METIS_ERROR_MEMORY` - Indicates that it could not allocate the required memory.<br /> 
-                !! `METIS_ERROR` - Indicates some other type of error.
-        end function
+        ! Returns
+        integer(c_int) :: ierr
+            !! `METIS_OK` - Indicates that the function returned normally.<br /> 
+            !! `METIS_ERROR_INPUT` - Indicates an input error.<br /> 
+            !! `METIS_ERROR_MEMORY` - Indicates that it could not allocate the required memory.<br /> 
+            !! `METIS_ERROR` - Indicates some other type of error.
+    end function
 !*****************************************************************************************
 
 !*****************************************************************************************
@@ -467,60 +467,80 @@ module metis_interface
 !call METIS_Free(adjncy)
 !end
 !```
-        function METIS_MeshToNodal(ne,nn,eptr,eind,numflag,xadj,adjncy) result(ierr) bind(C,name="METIS_MeshToNodal")
-            import c_int, c_ptr
-            
-            ! Parameters
-            integer(c_int), intent(in) :: ne
-                !! The number of elements in the mesh.
-            integer(c_int), intent(in) :: nn
-                !! The number of nodes in the mesh.
-            integer(c_int), intent(in), dimension(*) :: eptr, eind
-                !! The pair of arrays storing the mesh as described in Section 5.6 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
-            integer(c_int), intent(in) :: numflag
-                !! Used to indicate which numbering scheme is used for `eptr` and `eind`.
-                !! The possible values are: <br />
-                !! 0 - C-style numbering is assumed that starts from 0 <br />
-                !! 1 - Fortran-style numbering is assumed that starts from 1
-            type(c_ptr), intent(out) :: xadj, adjncy
-                !! These arrays store the adjacency structure of the generated dual graph. 
-                !! The format of the adjacency structure is described in Section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+    function METIS_MeshToNodal(ne,nn,eptr,eind,numflag,xadj,adjncy) result(ierr) bind(C,name="METIS_MeshToNodal")
+        import c_int, c_ptr
+        
+        ! Parameters
+        integer(c_int), intent(in) :: ne
+            !! The number of elements in the mesh.
+        integer(c_int), intent(in) :: nn
+            !! The number of nodes in the mesh.
+        integer(c_int), intent(in), dimension(*) :: eptr, eind
+            !! The pair of arrays storing the mesh as described in Section 5.6 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+        integer(c_int), intent(in) :: numflag
+            !! Used to indicate which numbering scheme is used for `eptr` and `eind`.
+            !! The possible values are: <br />
+            !! 0 - C-style numbering is assumed that starts from 0 <br />
+            !! 1 - Fortran-style numbering is assumed that starts from 1
+        type(c_ptr), intent(out) :: xadj, adjncy
+            !! These arrays store the adjacency structure of the generated dual graph. 
+            !! The format of the adjacency structure is described in Section 5.5 of the [manual](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
 
-            ! Returns
-            integer(c_int) :: ierr
-                !! `METIS_OK` - Indicates that the function returned normally.<br /> 
-                !! `METIS_ERROR_INPUT` - Indicates an input error.<br /> 
-                !! `METIS_ERROR_MEMORY` - Indicates that it could not allocate the required memory.<br /> 
-                !! `METIS_ERROR` - Indicates some other type of error.
-        end function
+        ! Returns
+        integer(c_int) :: ierr
+            !! `METIS_OK` - Indicates that the function returned normally.<br /> 
+            !! `METIS_ERROR_INPUT` - Indicates an input error.<br /> 
+            !! `METIS_ERROR_MEMORY` - Indicates that it could not allocate the required memory.<br /> 
+            !! `METIS_ERROR` - Indicates some other type of error.
+    end function
 !*****************************************************************************************
 
-        !
-        ! Utility routines
-        !
+    !
+    ! Utility routines
+    !
 
 !*****************************************************************************************
 !> Initializes the options array into its default values.
 !
-!# Example
-!
+!@note
+! The passed array `options` must have the size `METIS_NOPTIONS` (40).
+! To be able to use the parameters in the [[metis_enum]] module it is recommended to use
+! zero-based indexing for the options array: 
 !```Fortran
-! integer :: opts(0:39)
+!integer(c_int) :: opts(0:39)
+!```
+!@endnote
+!
+!# Examples
+! To set Fortran style index-numbering use:
+!```Fortran
+!integer :: opts(0:39)
 ! 
-! call METIS_SetDefaultOptions(opts)
-! opts(18) = 1 ! Fortran-style index numbering
-!```   
-        function METIS_SetDefaultOptions(options) result(ierr) bind(C,name="METIS_SetDefaultOptions")
-            import c_int, METIS_NOPTIONS
-            
-            ! Parameters
-            integer(c_int), intent(out) :: options(METIS_NOPTIONS)
-                !! The array of options that will be initialized.
+!call METIS_SetDefaultOptions(opts)
+!opts(17) = 1 ! Fortran-style index numbering
+!```
+!
+! Other options can be changed using parameters from the [[metis_enum]] module.
+!```Fortran
+!use metis_interface, only : METIS_SetDefaultOptions
+!use metis_enum, only : METIS_OPTION_DBGLVL, METIS_DBG_INFO
+!integer :: opts(0:39)
+! 
+!call METIS_SetDefaultOptions(opts)
+!opts(METIS_OPTION_DBGLVL) = METIS_DBG_INFO ! Show various diagnostic messages
+!end
+!```
+    function METIS_SetDefaultOptions(options) result(ierr) bind(C,name="METIS_SetDefaultOptions")
+        import c_int, METIS_NOPTIONS
+        
+        ! Parameters
+        integer(c_int), intent(out) :: options(METIS_NOPTIONS)
+            !! The array of options that will be initialized.
 
-            ! Returns
-            integer(c_int) :: ierr
-                !! `METIS_OK` - Indicates that the function returned normally.
-        end function
+        ! Returns
+        integer(c_int) :: ierr
+            !! `METIS_OK` - Indicates that the function returned normally.
+    end function
 !*****************************************************************************************
 
 !*****************************************************************************************
@@ -541,18 +561,18 @@ module metis_interface
 ! call METIS_Free(xadj)
 ! call METIS_Free(adjncy)
 !```   
-        function METIS_Free(ptr) result(ierr) bind(C,name="METIS_Free")
-            import c_int, c_ptr
-            
-            ! Parameters
-            type(c_ptr), value :: ptr
-                !! The pointer to be freed. This pointer should be one of the `xadj` or `adjncy`
-                !! arrays returned by METIS' API routines.
+    function METIS_Free(ptr) result(ierr) bind(C,name="METIS_Free")
+        import c_int, c_ptr
+        
+        ! Parameters
+        type(c_ptr), value :: ptr
+            !! The pointer to be freed. This pointer should be one of the `xadj` or `adjncy`
+            !! arrays returned by METIS' API routines.
 
-            ! Returns
-            integer(c_int) :: ierr
-                !! `METIS_OK` - Indicates that the function returned normally.
-        end function
+        ! Returns
+        integer(c_int) :: ierr
+            !! `METIS_OK` - Indicates that the function returned normally.
+    end function
 !*****************************************************************************************
 
     end interface
