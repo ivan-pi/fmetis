@@ -39,14 +39,25 @@ The object-oriented API is currently under development.
 
 Examples of METIS usage from Fortran will be provided soon.
 
-## Compiling
+## Compiling and linking
 
 Compile instructions will be provided soon.
 
 ## Documentation
 
-The latest documentation can be found [here](https://ivan-pi.github.io/fmetis/). The documentation was generated from the source code using [FORD](https://github.com/cmacmackin/ford).
-
-The original METIS documentation may be downloaded [here (PDF)](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf). More information about METIS can be found on the [original homepage](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview).
+The latest documentation can be found [here](https://ivan-pi.github.io/fmetis/). The documentation was generated from the source code using [FORD](https://github.com/cmacmackin/ford). To generate the documentation locally run the following command in the root folder of the project (FORD must be installed first):
+```
+ford ./project.md
+```
+More information about METIS can be found on the [original homepage](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview) of the [Karypis Lab](http://glaros.dtc.umn.edu/).
+The original METIS documentation may be downloaded [here (PDF)](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
 
 ## License
+
+The Fortran METIS Interface source code, related files and documentation are distributed under the permissive MIT software license.  See the [LICENSE](https://raw.githubusercontent.com/ivan-pi/fmetis/master/LICENSE) file for more details. Note that to succesfully use the Fortran METIS interface, the source code of this project must be [compiled and linked](#compiling-and-linking) with the original METIS source files that are distributed under the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0). 
+
+## To-Do List
+- [ ] Provide usage examples for partitioning graphs, partitioning meshes and computing sparse matrix reorderings
+- [ ] Provide examples for reading and writing METIS graph and mesh files
+- [ ] Move documentation to a separate branch
+- [ ] Develop unit tests for the "raw" C and object-oriented interfaces
