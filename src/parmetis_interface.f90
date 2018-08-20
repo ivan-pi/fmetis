@@ -1,3 +1,9 @@
+! parmetis_interface.f90 -- Fortran METIS Interface
+!
+! Copyright (C) 2018 Ivan Pribec <ivan.pribec@gmail.com>
+!
+! This software may be modified and distributed under the terms
+! of the MIT license.  See the LICENSE file for details.
 
 ! http://glaros.dtc.umn.edu/gkhome/metis/parmetis/download
 ! http://glaros.dtc.umn.edu/gkhome/fetch/sw/parmetis/manual.pdf
