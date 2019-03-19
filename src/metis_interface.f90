@@ -91,7 +91,7 @@ module metis_interface
             !! An array of size `nparts*ncon` that specifies the desired weight for each partition and constraint.
             !! If not present, the graph is divided equally among the partitions. More in the description.
         real(c_double), intent(in), optional :: ubvec(ncon)
-            !! An array of size `ncon` that specifiew the allowed load imbalance for each constraint. 
+            !! An array of size `ncon` that specifies the allowed load imbalance for each constraint. 
             !! For the `i`-th partition and `j`-th constraint the allowed weight is the `ubvec(j)*tpwgts(i*ncon+j)`
             !! fraction of the `j`-th's constraint total weight. If not present, the load imbalance
             !! tolerance is 1.001 (for `ncon = 1`) or 1.01 (for `ncon > 1`).

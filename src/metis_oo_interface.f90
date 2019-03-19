@@ -77,10 +77,9 @@ contains
         character(len=3) :: cfmt
         character(len=11) :: fstring
 
-        fstring = '(*(i0,:,x))'
+        fstring = '(*(i0,:,x))' ! Format string for graph output
 
-        ! Fortran or C numbering?
-        numflag_ = 1
+        numflag_ = 1 ! Assume Fortran numbering by default
         if (present(numflag)) numflag_ = numflag
         
         ! Get number of vertices and edges
@@ -200,7 +199,7 @@ contains
         character(len=3) :: cfmt
         integer :: nvtxs, nedgs, ncon, fmt, numflag_
 
-        numflag_ = 1
+        numflag_ = 1 ! Assume Fortran numbering by default
         if (present(numflag)) numflag_ = numflag
 
         ! Determine number of columns in header line

@@ -22,7 +22,7 @@ if (CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
     # gfortran
     # Enable this if you want to check for single/double corruption (and use
     # the Debug build):
-    set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} -fdefault-real-8 -std=f2008ts")
+    set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} -fdefault-real-8 -std=f2018")
 endif ()
 
 

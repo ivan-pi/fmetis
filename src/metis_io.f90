@@ -286,12 +286,17 @@ contains
 
     end subroutine
 
-    subroutine print_options(opts)
-        integer, intent(in) :: opts(:)
-        integer :: i
+    subroutine print_metis_options(opts,unit)
+        use iso_fortran_env, only: output_unit
+        integer, intent(in) :: opts(0:)
+        integer, intent(in), optional :: unit
+        integer :: i, unit_
 
-        do i = lbound(opts,1), ubound(opts,1)
-            print *, "option ",i, opts(i)
+        unit_ = output_unit ! standard output
+        if (present(unit)) unit_ = unit
+
+        do i = 0, METIS_NOPTIONS-1
+            write(unit_,'("Option ",I2,":",I3)') i, opts(i)
         end do
     end subroutine
 
