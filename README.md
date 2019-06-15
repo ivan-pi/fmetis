@@ -24,6 +24,7 @@ mkdir -p build
 cd build
 cmake ..
 make
+ctest
 ```
 
 Use METIS in your code by including the modules:
@@ -35,9 +36,9 @@ use metis_interface
 
 ## Why Fortran METIS Interface?
 
-Fortran is still one of the main programming languages in use for scientific computing. For finite element, finite volume, and other scientific codes, the fill-reducing orderings computed by METIS can help reduce the computational requirements of sparse matrix factorization. Moreover, the graph partitions produced by METIS can be used to divide meshes for parallel processing. 
+Fortran is still one of the main programming languages used for scientific computing. In many finite element, finite volume, and other scientific codes, the fill-reducing orderings computed by METIS can help reduce the computational requirements of sparse matrix factorization. Moreover, the graph partitions produced by METIS can be used to divide meshes for parallel processing. 
 
-While METIS was already designed with support for calls from Fortran c, the C interoperability features available in modern Fortran (`>=` 2003) allow the METIS routines to be called in a simple and safe way with guaranteed type checking and avoiding issues with compiler name mangling.
+While METIS was already designed with support for calls from Fortran, the C interoperability features available in modern Fortran (`>= 2003`) allow the METIS routines to be called in a simple and safe way with guaranteed type checking and avoiding issues with compiler name mangling.
 
 ## METIS API
 
