@@ -1,16 +1,38 @@
 # Fortran METIS Interface
 
-## Brief description
+A modern Fortran interface to the [METIS software package](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview) for partitioning unstructured graphs, partitioning meshes, and computing fill-reducing orderings of sparse matrices.
 
-This package provides a Fortran interface to the [METIS software package](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview) for partitioning unstructured graphs, partitioning meshes, and computing fill-reducing orderings of sparse matrices. The interface makes use of the C interoperability features available in modern Fortran (i.e., Fortran 2003+) and provides a simple and safe way to call the original routines.
+* [Getting started](#getting-started)
 
-### METIS API
+## Getting started
 
-Examples of calls to the Fortran versions of the core METIS library routines:
+Download and install METIS according to instructions found [here](http://glaros.dtc.umn.edu/gkhome/metis/metis/download).
+
+```
+git clone https://github.com/ivan-pi/fmetis
+cd fmetis
+mkdir -p build
+cd build
+cmake ..
+make
+```
+
+Use METIS in your code by including the modules:
 
 ```Fortran
-! All functions return an integer status flag ierr
+use metis_enum
+use metis_interface
+```
 
+## Why Fortran METIS Interface?
+
+Fortran is still one of the main programming languages in use for scientific computing. For finite element, finite volume, or meshfree codes, the fill-reducing orderings computed by METIS can help reduce the computational requirements of sparse matrix factorization. The graph partionings can be used to divide meshes for parallel execution. By using the C interoperability features available in modern Fortran (`>=` 2003) the METIS routines can be called in a simple and safe way with guaranteed type checking and without worrying about name mangling. 
+
+## METIS API
+
+The following core METIS library routines are available:
+
+```Fortran
 ! Graph partitioning routines
 ierr = METIS_ParthGraphRecursive(nvtxs,ncon,xadj,adjncy,vwgt,vsize,adjwgt,nparts,tpwgts,ubvec,options,objval,part)
 ierr = METIS_PartGraphKway(nvtxs,ncon,xadj,adjncy,vwgt,vsize,adjwgt,nparts,tpwgts,ubvec,options,objval,part)
@@ -31,11 +53,13 @@ ierr = METIS_SetDefaultOptions(options)
 ierr = METIS_Free(ptr)
 ```
 
-### Object-oriented API
+All functions return an integer status flag `ierr` that can be checked for success.
+
+## Object-oriented API
 
 The object-oriented API is currently under development.
 
-## Examples
+## Example usage
 
 Examples of METIS usage from Fortran will be provided soon.
 
@@ -50,7 +74,7 @@ The latest documentation can be found [here](https://ivan-pi.github.io/fmetis/).
 ford ./project.md
 ```
 More information about METIS can be found on the [original homepage](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview) of the [Karypis Lab](http://glaros.dtc.umn.edu/).
-The original METIS documentation may be downloaded [here (PDF)](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+The original METIS documentation can be downloaded [here (PDF)](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
 
 ## License
 
@@ -60,4 +84,3 @@ The Fortran METIS Interface source code, related files and documentation are dis
 - [ ] Provide usage examples for partitioning graphs, partitioning meshes and computing sparse matrix reorderings
 - [ ] Provide examples for reading and writing METIS graph and mesh files
 - [ ] Move documentation to a separate branch
-- [ ] Develop unit tests for the "raw" C and object-oriented interfaces
