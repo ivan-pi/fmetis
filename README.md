@@ -3,10 +3,19 @@
 A modern Fortran interface to the [METIS software package](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview) for partitioning unstructured graphs, partitioning meshes, and computing fill-reducing orderings of sparse matrices.
 
 * [Getting started](#getting-started)
+* [Why Fortran METIS Interface](#why-fortran-metis-interface)
+* [METIS API](#metis-api)
+* [Object-oriented API](#object-oriented-api)
+* [Example usage](#example-usage)
+* [Documentation](#dcoumentation)
+* [Contributing](#contributing)
+* [License](#license)
 
 ## Getting started
 
 Download and install METIS according to instructions found [here](http://glaros.dtc.umn.edu/gkhome/metis/metis/download).
+
+Download and build the Fortran interface:
 
 ```
 git clone https://github.com/ivan-pi/fmetis
@@ -26,7 +35,9 @@ use metis_interface
 
 ## Why Fortran METIS Interface?
 
-Fortran is still one of the main programming languages in use for scientific computing. For finite element, finite volume, or meshfree codes, the fill-reducing orderings computed by METIS can help reduce the computational requirements of sparse matrix factorization. The graph partionings can be used to divide meshes for parallel execution. By using the C interoperability features available in modern Fortran (`>=` 2003) the METIS routines can be called in a simple and safe way with guaranteed type checking and without worrying about name mangling. 
+Fortran is still one of the main programming languages in use for scientific computing. For finite element, finite volume, and other scientific codes, the fill-reducing orderings computed by METIS can help reduce the computational requirements of sparse matrix factorization. Moreover, the graph partitions produced by METIS can be used to divide meshes for parallel processing. 
+
+While METIS was already designed with support for calls from Fortran c, the C interoperability features available in modern Fortran (`>=` 2003) allow the METIS routines to be called in a simple and safe way with guaranteed type checking and avoiding issues with compiler name mangling.
 
 ## METIS API
 
@@ -63,10 +74,6 @@ The object-oriented API is currently under development.
 
 Examples of METIS usage from Fortran will be provided soon.
 
-## Compiling and linking
-
-Compile instructions will be provided soon.
-
 ## Documentation
 
 The latest documentation can be found [here](https://ivan-pi.github.io/fmetis/). The documentation was generated from the source code using [FORD](https://github.com/cmacmackin/ford). To generate the documentation locally run the following command in the root folder of the project (FORD must be installed first):
@@ -75,6 +82,10 @@ ford ./project.md
 ```
 More information about METIS can be found on the [original homepage](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview) of the [Karypis Lab](http://glaros.dtc.umn.edu/).
 The original METIS documentation can be downloaded [here (PDF)](http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf).
+
+## Contributing
+
+Please submit a bug report or suggest a modification by opening a [new issue](https://github.com/ivan-pi/fmetis/issues/new).
 
 ## License
 
