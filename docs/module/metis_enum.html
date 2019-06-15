@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="Fortran METIS Interface">
+    
+    <meta name="author" content="Ivan Pribec" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>metis_enum &ndash; Fortran METIS Interface</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Fortran METIS Interface </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+		 aria-expanded="false">Contents <span class="caret"></span></a>
+	      <ul class="dropdown-menu">
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+            <li><a href="../lists/programs.html">Programs</a></li>
+				
+            </ul>
+            </li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>metis_enum 
+    <small>Module</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+	  data-placement="bottom" data-html="true"
+	  title=" 6.5% of total for modules and submodules.">52 statements</a>
+     </li> 
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/metis_enum.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li><a href='../sourcefile/metis_enum.f90.html'>metis_enum.f90</a></li>
+  
+     <li class="active">metis_enum</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_ok">METIS_OK</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_error_input">METIS_ERROR_INPUT</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_error_memory">METIS_ERROR_MEMORY</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_error">METIS_ERROR</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_ptype">METIS_OPTION_PTYPE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_objtype">METIS_OPTION_OBJTYPE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_ctype">METIS_OPTION_CTYPE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_iptype">METIS_OPTION_IPTYPE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_rtype">METIS_OPTION_RTYPE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_dbglvl">METIS_OPTION_DBGLVL</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_niter">METIS_OPTION_NITER</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_ncuts">METIS_OPTION_NCUTS</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_seed">METIS_OPTION_SEED</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_no2hop">METIS_OPTION_NO2HOP</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_minconn">METIS_OPTION_MINCONN</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_contig">METIS_OPTION_CONTIG</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_compress">METIS_OPTION_COMPRESS</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_ccorder">METIS_OPTION_CCORDER</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_pfactor">METIS_OPTION_PFACTOR</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_nseps">METIS_OPTION_NSEPS</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_ufactor">METIS_OPTION_UFACTOR</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_numbering">METIS_OPTION_NUMBERING</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_ptype_rb">METIS_PTYPE_RB</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_ptype_kway">METIS_PTYPE_KWAY</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_ctype_rm">METIS_CTYPE_RM</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_ctype_shem">METIS_CTYPE_SHEM</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_iptype_grow">METIS_IPTYPE_GROW</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_iptype_random">METIS_IPTYPE_RANDOM</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_iptype_edge">METIS_IPTYPE_EDGE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_iptype_node">METIS_IPTYPE_NODE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_iptype_metisrb">METIS_IPTYPE_METISRB</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_rtype_fm">METIS_RTYPE_FM</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_rtype_greedy">METIS_RTYPE_GREEDY</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_rtype_sep2sided">METIS_RTYPE_SEP2SIDED</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_rtype_sep1sided">METIS_RTYPE_SEP1SIDED</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_info">METIS_DBG_INFO</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_time">METIS_DBG_TIME</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_coarsen">METIS_DBG_COARSEN</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_refine">METIS_DBG_REFINE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_ipart">METIS_DBG_IPART</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_moveinfo">METIS_DBG_MOVEINFO</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_sepinfo">METIS_DBG_SEPINFO</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_conninfo">METIS_DBG_CONNINFO</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_contiginfo">METIS_DBG_CONTIGINFO</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_memory">METIS_DBG_MEMORY</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_objtype_cut">METIS_OBJTYPE_CUT</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_objtype_vol">METIS_OBJTYPE_VOL</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_objtype_node">METIS_OBJTYPE_NODE</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <hr>
+  
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods-0">All Modules</a></h3></div>
+  <div id="allmods-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/metis_enum.html">metis_enum</a>
+      
+      <a class="list-group-item" href="../module/metis_interface.html">metis_interface</a>
+      
+      <a class="list-group-item" href="../module/metis_io.html">metis_io</a>
+      
+      <a class="list-group-item" href="../module/metis_oo_interface.html">metis_oo_interface</a>
+      
+      <a class="list-group-item" href="../module/metis_tests.html">metis_tests</a>
+      
+      <a class="list-group-item" href="../module/parmetis_interface.html">parmetis_interface</a>
+      
+    </div>
+  </div>
+</div>
+
+
+</div>  
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      
+    
+  
+
+    
+    
+    
+    
+    <h3>Used By</h3>
+    
+                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: module~~metis_enum~~UsedByGraph Pages: 1 -->
+<svg id="modulemetis_enumUsedByGraph" width="357pt" height="354pt"
+ viewBox="0.00 0.00 357.00 354.35" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~metis_enum~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 350.348)">
+<title>module~~metis_enum~~UsedByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-350.348 353,-350.348 353,4 -4,4"/>
+<!-- module~metis_enum -->
+<g id="module~~metis_enum~~UsedByGraph_node1" class="node"><title>module~metis_enum</title>
+<polygon fill="none" stroke="black" points="71,-178.348 0,-178.348 0,-154.348 71,-154.348 71,-178.348"/>
+<text text-anchor="middle" x="35.5" y="-163.948" font-family="Helvetica,sans-Serif" font-size="10.50">metis_enum</text>
+</g>
+<!-- program~test_partgraphrecursive2 -->
+<g id="module~~metis_enum~~UsedByGraph_node2" class="node"><title>program~test_partgraphrecursive2</title>
+<g id="a_module~~metis_enum~~UsedByGraph_node2"><a xlink:href="../program/test_partgraphrecursive2.html" xlink:title="test_PartGraphRecursive2">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="246,-346.348 107,-346.348 107,-322.348 246,-322.348 246,-346.348"/>
+<text text-anchor="middle" x="176.5" y="-331.948" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_PartGraphRecursive2</text>
+</a>
+</g>
+</g>
+<!-- module~metis_enum&#45;&gt;program~test_partgraphrecursive2 -->
+<g id="module~~metis_enum~~UsedByGraph_edge3" class="edge"><title>module~metis_enum&#45;&gt;program~test_partgraphrecursive2</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M38.8926,-178.65C45.009,-206.782 63.8759,-276.241 107,-313.348 108.556,-314.687 110.195,-315.94 111.902,-317.113"/>
+<polygon fill="#000000" stroke="#000000" points="110.504,-320.349 120.91,-322.34 114.017,-314.294 110.504,-320.349"/>
+</g>
+<!-- program~test_partmeshnodal1 -->
+<g id="module~~metis_enum~~UsedByGraph_node3" class="node"><title>program~test_partmeshnodal1</title>
+<g id="a_module~~metis_enum~~UsedByGraph_node3"><a xlink:href="../program/test_partmeshnodal1.html" xlink:title="test_PartMeshNodal1">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="234,-304.348 119,-304.348 119,-280.348 234,-280.348 234,-304.348"/>
+<text text-anchor="middle" x="176.5" y="-289.948" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_PartMeshNodal1</text>
+</a>
+</g>
+</g>
+<!-- module~metis_enum&#45;&gt;program~test_partmeshnodal1 -->
+<g id="module~~metis_enum~~UsedByGraph_edge4" class="edge"><title>module~metis_enum&#45;&gt;program~test_partmeshnodal1</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M41.3139,-178.384C50.6547,-200.207 73.324,-246.354 107,-271.348 109.098,-272.905 111.312,-274.347 113.61,-275.684"/>
+<polygon fill="#000000" stroke="#000000" points="112.312,-278.95 122.817,-280.333 115.468,-272.701 112.312,-278.95"/>
+</g>
+<!-- program~test_partgraphrecursive1 -->
+<g id="module~~metis_enum~~UsedByGraph_node4" class="node"><title>program~test_partgraphrecursive1</title>
+<g id="a_module~~metis_enum~~UsedByGraph_node4"><a xlink:href="../program/test_partgraphrecursive1.html" xlink:title="test_PartGraphRecursive1">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="246,-262.348 107,-262.348 107,-238.348 246,-238.348 246,-262.348"/>
+<text text-anchor="middle" x="176.5" y="-247.948" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_PartGraphRecursive1</text>
+</a>
+</g>
+</g>
+<!-- module~metis_enum&#45;&gt;program~test_partgraphrecursive1 -->
+<g id="module~~metis_enum~~UsedByGraph_edge5" class="edge"><title>module~metis_enum&#45;&gt;program~test_partgraphrecursive1</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M47.249,-178.762C60.1234,-192.905 82.9784,-215.805 107,-229.348 110.281,-231.198 113.744,-232.904 117.301,-234.474"/>
+<polygon fill="#000000" stroke="#000000" points="116.288,-237.839 126.871,-238.32 118.897,-231.344 116.288,-237.839"/>
+</g>
+<!-- program~test_nodend -->
+<g id="module~~metis_enum~~UsedByGraph_node5" class="node"><title>program~test_nodend</title>
+<g id="a_module~~metis_enum~~UsedByGraph_node5"><a xlink:href="../program/test_nodend.html" xlink:title="test_NodeND">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="214.5,-220.348 138.5,-220.348 138.5,-196.348 214.5,-196.348 214.5,-220.348"/>
+<text text-anchor="middle" x="176.5" y="-205.948" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_NodeND</text>
+</a>
+</g>
+</g>
+<!-- module~metis_enum&#45;&gt;program~test_nodend -->
+<g id="module~~metis_enum~~UsedByGraph_edge6" class="edge"><title>module~metis_enum&#45;&gt;program~test_nodend</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M71.217,-176.838C88.6098,-182.093 109.918,-188.532 128.73,-194.216"/>
+<polygon fill="#000000" stroke="#000000" points="127.721,-197.567 138.306,-197.109 129.746,-190.867 127.721,-197.567"/>
+</g>
+<!-- module~metis_io -->
+<g id="module~~metis_enum~~UsedByGraph_node6" class="node"><title>module~metis_io</title>
+<g id="a_module~~metis_enum~~UsedByGraph_node6"><a xlink:href="../module/metis_io.html" xlink:title="metis_io">
+<polygon fill="#337ab7" stroke="#337ab7" points="203.5,-178.348 149.5,-178.348 149.5,-154.348 203.5,-154.348 203.5,-178.348"/>
+<text text-anchor="middle" x="176.5" y="-163.948" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">metis_io</text>
+</a>
+</g>
+</g>
+<!-- module~metis_enum&#45;&gt;module~metis_io -->
+<g id="module~~metis_enum~~UsedByGraph_edge7" class="edge"><title>module~metis_enum&#45;&gt;module~metis_io</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M71.217,-166.348C91.8539,-166.348 118.004,-166.348 138.955,-166.348"/>
+<polygon fill="#000000" stroke="#000000" points="139.077,-169.848 149.077,-166.348 139.077,-162.848 139.077,-169.848"/>
+</g>
+<!-- program~test_partmeshnodal2 -->
+<g id="module~~metis_enum~~UsedByGraph_node7" class="node"><title>program~test_partmeshnodal2</title>
+<g id="a_module~~metis_enum~~UsedByGraph_node7"><a xlink:href="../program/test_partmeshnodal2.html" xlink:title="test_PartMeshNodal2">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="234,-136.348 119,-136.348 119,-112.348 234,-112.348 234,-136.348"/>
+<text text-anchor="middle" x="176.5" y="-121.948" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_PartMeshNodal2</text>
+</a>
+</g>
+</g>
+<!-- module~metis_enum&#45;&gt;program~test_partmeshnodal2 -->
+<g id="module~~metis_enum~~UsedByGraph_edge8" class="edge"><title>module~metis_enum&#45;&gt;program~test_partmeshnodal2</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M71.217,-155.858C87.7039,-150.876 107.709,-144.831 125.772,-139.374"/>
+<polygon fill="#000000" stroke="#000000" points="127.011,-142.656 135.571,-136.413 124.987,-135.955 127.011,-142.656"/>
+</g>
+<!-- module~metis_oo_interface -->
+<g id="module~~metis_enum~~UsedByGraph_node8" class="node"><title>module~metis_oo_interface</title>
+<g id="a_module~~metis_enum~~UsedByGraph_node8"><a xlink:href="../module/metis_oo_interface.html" xlink:title="metis_oo_interface">
+<polygon fill="#337ab7" stroke="#337ab7" points="228,-94.3479 125,-94.3479 125,-70.3479 228,-70.3479 228,-94.3479"/>
+<text text-anchor="middle" x="176.5" y="-79.9479" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">metis_oo_interface</text>
+</a>
+</g>
+</g>
+<!-- module~metis_enum&#45;&gt;module~metis_oo_interface -->
+<g id="module~~metis_enum~~UsedByGraph_edge9" class="edge"><title>module~metis_enum&#45;&gt;module~metis_oo_interface</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M47.249,-153.934C60.1234,-139.791 82.9784,-116.891 107,-103.348 110.281,-101.498 113.744,-99.792 117.301,-98.2216"/>
+<polygon fill="#000000" stroke="#000000" points="118.897,-101.352 126.871,-94.376 116.288,-94.8568 118.897,-101.352"/>
+</g>
+<!-- program~test_partgraphkway -->
+<g id="module~~metis_enum~~UsedByGraph_node9" class="node"><title>program~test_partgraphkway</title>
+<g id="a_module~~metis_enum~~UsedByGraph_node9"><a xlink:href="../program/test_partgraphkway.html" xlink:title="test_PartGraphKway">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="232,-52.3479 121,-52.3479 121,-28.3479 232,-28.3479 232,-52.3479"/>
+<text text-anchor="middle" x="176.5" y="-37.9479" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_PartGraphKway</text>
+</a>
+</g>
+</g>
+<!-- module~metis_enum&#45;&gt;program~test_partgraphkway -->
+<g id="module~~metis_enum~~UsedByGraph_edge10" class="edge"><title>module~metis_enum&#45;&gt;program~test_partgraphkway</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M41.3139,-154.312C50.6547,-132.489 73.324,-86.3421 107,-61.3479 109.098,-59.7911 111.312,-58.3484 113.61,-57.0116"/>
+<polygon fill="#000000" stroke="#000000" points="115.468,-59.9944 122.817,-52.3627 112.312,-53.7458 115.468,-59.9944"/>
+</g>
+<!-- program~test_fmetis -->
+<g id="module~~metis_enum~~UsedByGraph_node10" class="node"><title>program~test_fmetis</title>
+<g id="a_module~~metis_enum~~UsedByGraph_node10"><a xlink:href="../program/test_fmetis.html" xlink:title="test_fmetis">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="347.5,-74.3479 283.5,-74.3479 283.5,-50.3479 347.5,-50.3479 347.5,-74.3479"/>
+<text text-anchor="middle" x="315.5" y="-59.9479" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">test_fmetis</text>
+</a>
+</g>
+</g>
+<!-- module~metis_enum&#45;&gt;program~test_fmetis -->
+<g id="module~~metis_enum~~UsedByGraph_edge11" class="edge"><title>module~metis_enum&#45;&gt;program~test_fmetis</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M38.0615,-153.99C42.5355,-124.455 58.3742,-49.9562 107,-19.3479 159.282,13.562 186.633,-2.25848 246,-19.3479 262.884,-24.208 279.627,-34.5897 292.334,-43.9343"/>
+<polygon fill="#000000" stroke="#000000" points="290.375,-46.8431 300.439,-50.1574 294.639,-41.291 290.375,-46.8431"/>
+</g>
+<!-- module~metis_io&#45;&gt;program~test_fmetis -->
+<g id="module~~metis_enum~~UsedByGraph_edge2" class="edge"><title>module~metis_io&#45;&gt;program~test_fmetis</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M203.786,-162.041C217.235,-158.945 233.383,-153.78 246,-145.348 270.185,-129.185 290.29,-101.981 302.331,-83.1449"/>
+<polygon fill="#000000" stroke="#000000" points="305.45,-84.7557 307.725,-74.408 299.494,-81.0786 305.45,-84.7557"/>
+</g>
+<!-- module~metis_tests -->
+<g id="module~~metis_enum~~UsedByGraph_node11" class="node"><title>module~metis_tests</title>
+<g id="a_module~~metis_enum~~UsedByGraph_node11"><a xlink:href="../module/metis_tests.html" xlink:title="metis_tests">
+<polygon fill="#337ab7" stroke="#337ab7" points="349,-178.348 282,-178.348 282,-154.348 349,-154.348 349,-178.348"/>
+<text text-anchor="middle" x="315.5" y="-163.948" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">metis_tests</text>
+</a>
+</g>
+</g>
+<!-- module~metis_io&#45;&gt;module~metis_tests -->
+<g id="module~~metis_enum~~UsedByGraph_edge1" class="edge"><title>module~metis_io&#45;&gt;module~metis_tests</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M203.591,-166.348C222.826,-166.348 249.417,-166.348 271.739,-166.348"/>
+<polygon fill="#000000" stroke="#000000" points="271.978,-169.848 281.978,-166.348 271.978,-162.848 271.978,-169.848"/>
+</g>
+</g>
+</svg>
+</div>
+                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                      </div>
+                      <div class="modal-body">
+                        
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.38.0 (20140413.2041)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="490pt" height="32pt"
+ viewBox="0.00 0.00 489.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28 485.5,-28 485.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node"><title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,-0 54,-0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node"><title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="139.5,-24 72.5,-24 72.5,-0 139.5,-0 139.5,-24"/>
+<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="222,-24 158,-24 158,-0 222,-0 222,-24"/>
+<text text-anchor="middle" x="190" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="294,-24 240,-24 240,-0 294,-0 294,-24"/>
+<text text-anchor="middle" x="267" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="366,-24 312,-24 312,-0 366,-0 366,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="481.5,-24 384.5,-24 384.5,-0 481.5,-0 481.5,-24"/>
+<text text-anchor="middle" x="433" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a parent (sub)module to the submodule which is
+    descended from it. Dashed arrows point from a module being used to the
+    module or program unit using it.
+    </p>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+    <br>
+    
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_ok">METIS_OK</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_error_input">METIS_ERROR_INPUT</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_error_memory">METIS_ERROR_MEMORY</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_error">METIS_ERROR</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_ptype">METIS_OPTION_PTYPE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_objtype">METIS_OPTION_OBJTYPE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_ctype">METIS_OPTION_CTYPE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_iptype">METIS_OPTION_IPTYPE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_rtype">METIS_OPTION_RTYPE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_dbglvl">METIS_OPTION_DBGLVL</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_niter">METIS_OPTION_NITER</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_ncuts">METIS_OPTION_NCUTS</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_seed">METIS_OPTION_SEED</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_no2hop">METIS_OPTION_NO2HOP</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_minconn">METIS_OPTION_MINCONN</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_contig">METIS_OPTION_CONTIG</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_compress">METIS_OPTION_COMPRESS</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_ccorder">METIS_OPTION_CCORDER</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_pfactor">METIS_OPTION_PFACTOR</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_nseps">METIS_OPTION_NSEPS</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_ufactor">METIS_OPTION_UFACTOR</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_option_numbering">METIS_OPTION_NUMBERING</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_ptype_rb">METIS_PTYPE_RB</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_ptype_kway">METIS_PTYPE_KWAY</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_ctype_rm">METIS_CTYPE_RM</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_ctype_shem">METIS_CTYPE_SHEM</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_iptype_grow">METIS_IPTYPE_GROW</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_iptype_random">METIS_IPTYPE_RANDOM</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_iptype_edge">METIS_IPTYPE_EDGE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_iptype_node">METIS_IPTYPE_NODE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_iptype_metisrb">METIS_IPTYPE_METISRB</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_rtype_fm">METIS_RTYPE_FM</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_rtype_greedy">METIS_RTYPE_GREEDY</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_rtype_sep2sided">METIS_RTYPE_SEP2SIDED</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_rtype_sep1sided">METIS_RTYPE_SEP1SIDED</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_info">METIS_DBG_INFO</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_time">METIS_DBG_TIME</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_coarsen">METIS_DBG_COARSEN</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_refine">METIS_DBG_REFINE</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_ipart">METIS_DBG_IPART</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_moveinfo">METIS_DBG_MOVEINFO</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_sepinfo">METIS_DBG_SEPINFO</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_conninfo">METIS_DBG_CONNINFO</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_contiginfo">METIS_DBG_CONTIGINFO</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_dbg_memory">METIS_DBG_MEMORY</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_objtype_cut">METIS_OBJTYPE_CUT</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_objtype_vol">METIS_OBJTYPE_VOL</a>
+      
+      <a class="list-group-item" href="../module/metis_enum.html#variable-metis_objtype_node">METIS_OBJTYPE_NODE</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    <section>
+    <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_ok"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OK</strong></td><td> =</td><td>1</td><td><p>Returned normally.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_error_input"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_ERROR_INPUT</strong></td><td> =</td><td>-2</td><td><p>Returned due to erroneous inputs and/or options.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_error_memory"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_ERROR_MEMORY</strong></td><td> =</td><td>-3</td><td><p>Returned due to insufficient memory.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_error"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_ERROR</strong></td><td> =</td><td>-4</td><td><p>Return status: some other type of error.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_ptype"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_PTYPE</strong></td><td> =</td><td>0</td><td><p>Specifies the partitioning method.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_objtype"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_OBJTYPE</strong></td><td> =</td><td>1</td><td><p>Specifies the type of objective.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_ctype"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_CTYPE</strong></td><td> =</td><td>2</td><td><p>Specifies the matching scheme to be used during coarsening.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_iptype"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_IPTYPE</strong></td><td> =</td><td>3</td><td><p>Determines the algorithm used during initial partitioning.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_rtype"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_RTYPE</strong></td><td> =</td><td>4</td><td><p>Determines the algorithm used for refinement.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_dbglvl"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_DBGLVL</strong></td><td> =</td><td>5</td><td><p>Specifies the amount of progress/debugging information will be printed.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_niter"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_NITER</strong></td><td> =</td><td>6</td><td><p>Specifies the number of iterations for the refinement algorithm.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_ncuts"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_NCUTS</strong></td><td> =</td><td>7</td><td><p>Specifies the number of different partitionings that it will compute.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_seed"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_SEED</strong></td><td> =</td><td>8</td><td><p>Specifies the seed for the random number generator.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_no2hop"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_NO2HOP</strong></td><td> =</td><td>9</td><td><p>Specifies that the coarsening will not perform any 2–hop matchings when the standard matching approach fails to sufficiently coarsen the graph.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_minconn"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_MINCONN</strong></td><td> =</td><td>10</td><td><p>Specifies that the partitioning routines should try to minimize the maximum degree of the subdomain graph.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_contig"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_CONTIG</strong></td><td> =</td><td>11</td><td><p>Specifies that the partitioning routines should try to produce partitions that are contigous.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_compress"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_COMPRESS</strong></td><td> =</td><td>12</td><td><p>Specifies that the graph should be compressed by combining together vertices that have identical adjacency lists.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_ccorder"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_CCORDER</strong></td><td> =</td><td>13</td><td><p>Specifies if the connected components of the graph should first be identifies and ordered separately.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_pfactor"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_PFACTOR</strong></td><td> =</td><td>14</td><td><p>Specifies the minimum degree of the vertices that will be ordered last.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_nseps"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_NSEPS</strong></td><td> =</td><td>15</td><td><p>Specifies the number of different separators that it will compute at each level of nested dissection.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_ufactor"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_UFACTOR</strong></td><td> =</td><td>16</td><td><p>Specifies the maximum allowed load imbalance among the partitions.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_option_numbering"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OPTION_NUMBERING</strong></td><td> =</td><td>17</td><td><p>Used to indicate which numbering scheme is used for the adjacency structure of a graph or the element-node structure of a mesh</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_ptype_rb"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_PTYPE_RB</strong></td><td> =</td><td>0</td><td><p>Multilevel recursive bisectioning.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_ptype_kway"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_PTYPE_KWAY</strong></td><td> =</td><td>1</td><td><p>Multilevel \(k\)-way partitioning.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_ctype_rm"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_CTYPE_RM</strong></td><td> =</td><td>0</td><td><p>Random matching.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_ctype_shem"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_CTYPE_SHEM</strong></td><td> =</td><td>1</td><td><p>Sorted heavy-edge matching.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_iptype_grow"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_IPTYPE_GROW</strong></td><td> =</td><td>0</td><td><p>Grows a bisection using a greedy strategy.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_iptype_random"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_IPTYPE_RANDOM</strong></td><td> =</td><td>1</td><td><p>Computes a bisection at random followed by a refinement.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_iptype_edge"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_IPTYPE_EDGE</strong></td><td> =</td><td>2</td><td><p>Derives a separator form an edge cut.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_iptype_node"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_IPTYPE_NODE</strong></td><td> =</td><td>3</td><td><p>Grows a bisection using a greedy node-based strategy.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_iptype_metisrb"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_IPTYPE_METISRB</strong></td><td> =</td><td>4</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_rtype_fm"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_RTYPE_FM</strong></td><td> =</td><td>0</td><td><p>FM-based cut refinement.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_rtype_greedy"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_RTYPE_GREEDY</strong></td><td> =</td><td>1</td><td><p>Greedy-based cut and volume refinement.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_rtype_sep2sided"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_RTYPE_SEP2SIDED</strong></td><td> =</td><td>2</td><td><p>Two-sided node FM refinement.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_rtype_sep1sided"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_RTYPE_SEP1SIDED</strong></td><td> =</td><td>3</td><td><p>One-sided node FM refinement.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_dbg_info"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_DBG_INFO</strong></td><td> =</td><td>1</td><td><p>Shows various diagnostic messages.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_dbg_time"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_DBG_TIME</strong></td><td> =</td><td>2</td><td><p>Perform timing analysis.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_dbg_coarsen"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_DBG_COARSEN</strong></td><td> =</td><td>4</td><td><p>Show the coarsening progress.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_dbg_refine"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_DBG_REFINE</strong></td><td> =</td><td>8</td><td><p>Show the refinement progress.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_dbg_ipart"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_DBG_IPART</strong></td><td> =</td><td>16</td><td><p>Show info on initial partitioning.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_dbg_moveinfo"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_DBG_MOVEINFO</strong></td><td> =</td><td>32</td><td><p>Show info on vertex moves during refinement.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_dbg_sepinfo"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_DBG_SEPINFO</strong></td><td> =</td><td>64</td><td><p>Show info on vertex moves during sep refinement.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_dbg_conninfo"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_DBG_CONNINFO</strong></td><td> =</td><td>128</td><td><p>Show info on minimization of subdomain connectivity.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_dbg_contiginfo"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_DBG_CONTIGINFO</strong></td><td> =</td><td>256</td><td><p>Show info on elimination of connected components. </p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_dbg_memory"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_DBG_MEMORY</strong></td><td> =</td><td>2048</td><td><p>Show info related to wspace allocation.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_objtype_cut"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OBJTYPE_CUT</strong></td><td> =</td><td>0</td><td><p>Edge-cut minimization.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_objtype_vol"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OBJTYPE_VOL</strong></td><td> =</td><td>1</td><td><p>Total communication volume minimization.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-metis_objtype_node"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>METIS_OBJTYPE_NODE</strong></td><td> =</td><td>2</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    </div>
+  </div>
+
+  <section class="visible-xs visible-sm hidden-md">
+    <hr>
+    
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods-1">All Modules</a></h3></div>
+  <div id="allmods-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/metis_enum.html">metis_enum</a>
+      
+      <a class="list-group-item" href="../module/metis_interface.html">metis_interface</a>
+      
+      <a class="list-group-item" href="../module/metis_io.html">metis_io</a>
+      
+      <a class="list-group-item" href="../module/metis_oo_interface.html">metis_oo_interface</a>
+      
+      <a class="list-group-item" href="../module/metis_tests.html">metis_tests</a>
+      
+      <a class="list-group-item" href="../module/parmetis_interface.html">parmetis_interface</a>
+      
+    </div>
+  </div>
+</div>
+
+
+  </section>
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2019 </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> Fortran METIS Interface was developed by Ivan Pribec</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

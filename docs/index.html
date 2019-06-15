@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="Fortran METIS Interface">
+    
+    <meta name="author" content="Ivan Pribec" >
+    <link rel="icon" href="./favicon.png">
+
+    <title> Fortran METIS Interface </title>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/pygments.css" rel="stylesheet">
+    <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <link href="./css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="./js/jquery-2.1.3.min.js"></script>
+    <script src="./js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="./tipuesearch/tipuesearch_content.js"></script>
+    <link  href="./tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="./tipuesearch/tipuesearch_set.js"></script>
+    <script src="./tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./index.html">Fortran METIS Interface </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+		 aria-expanded="false">Contents <span class="caret"></span></a>
+	      <ul class="dropdown-menu">
+              
+            <li><a href="./lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="./lists/modules.html">Modules</a></li>
+				
+            
+                                
+            <li><a href="./lists/procedures.html">Procedures</a></li>
+				
+								
+            <li><a href="./lists/types.html">Derived Types</a></li>
+				
+				
+            <li><a href="./lists/programs.html">Programs</a></li>
+				
+            </ul>
+            </li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/files.html">Source Files</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="./search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <p>Fortran METIS Interface</p>
+        	 
+	<p> Find us on&hellip;</p>
+        <p>
+        	 
+          <a class="btn btn-lg btn-primary" href="https://github.com/ivan-pi/fmetis" role="button">GitHub</a>
+			 
+			 
+			 
+			 
+	         
+			 
+        </p>
+      </div>
+
+      <div class="row" id='text'>
+		  
+        <div class="col-md-8">
+		  
+          <h1>Fortran METIS Interface</h1>
+          <h1>Brief description</h1>
+<p>This is a Fortran interface to the <a href="http://glaros.dtc.umn.edu/gkhome/metis/metis/overview">METIS software package</a> 
+for partitioning unstructured graphs, partitioning meshes, and computing fill-reducing orderings
+of sparse matrices. The interface makes use of the C interoperability features available in modern Fortran 
+(i.e., Fortran 2003+) and provides a simple and safe way to call the original serial routines.</p>
+<h1>License</h1>
+<h1>Further information</h1>
+<ul>
+<li><a href="http://glaros.dtc.umn.edu/gkhome/metis/metis/overview">METIS Home page</a></li>
+<li><a href="http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/manual.pdf">METIS Manual (PDF)</a></li>
+</ul>
+        </div>
+		  
+        <div class="col-md-4">
+	  <div class="well">
+          <h2>Developer Info</h2>
+          <h4>Ivan Pribec</h4>
+          
+          
+			   
+            <div class="text-center"><div class="btn-group" role="group">
+              
+              <a class="btn btn-lg btn-primary" href="mailto:ivan.pribec@gmail.com"><i class="fa fa-envelope fa-lg"></i></a>
+              
+              
+              
+              <a class="btn btn-lg btn-primary" href="https://github.com/ivan-pi"><i class="fa fa-github fa-lg"></i></a>
+				  
+				  
+              
+              
+              
+              
+            </div></div>
+            
+       </div>
+       </div>
+       
+      </div>
+      
+      
+      
+      
+		
+      <div class="row">
+        <div class="col-xs-6 col-sm-3">
+              <h3>Source Files</h3>
+              <ul>
+                
+                  
+                    <li><a href='./sourcefile/metis_enum.f90.html'>metis_enum.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/metis_interface.f90.html'>metis_interface.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/metis_io.f90.html'>metis_io.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/metis_oo_interface.f90.html'>metis_oo_interface.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/metis_tests.f90.html'>metis_tests.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/parmetis_interface.f90.html'>parmetis_interface.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/test_nodend.f90.html'>test_NodeND.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/test_partgraphkway.f90.html'>test_PartGraphKway.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/test_partgraphrecursive1.f90.html'>test_PartGraphRecursive1.f90</a></li>
+                  
+                
+                  
+                    <li><a href='./sourcefile/test_partgraphrecursive2.f90.html'>test_PartGraphRecursive2.f90</a></li>
+                  
+                
+                  
+                    <li><a href="./lists/files.html"><em>All source files&hellip;</em></a></li>
+                  
+                
+                  
+                
+              </ul>
+          </div>
+          
+		  <div class="col-xs-6 col-sm-3">
+              <h3>Modules</h3>
+              <ul>
+                
+                  
+                    <li><a href='./module/metis_enum.html'>metis_enum</a></li>
+                  
+                
+                  
+                    <li><a href='./module/metis_interface.html'>metis_interface</a></li>
+                  
+                
+                  
+                    <li><a href='./module/metis_io.html'>metis_io</a></li>
+                  
+                
+                  
+                    <li><a href='./module/metis_oo_interface.html'>metis_oo_interface</a></li>
+                  
+                
+                  
+                    <li><a href='./module/metis_tests.html'>metis_tests</a></li>
+                  
+                
+                  
+                    <li><a href='./module/parmetis_interface.html'>parmetis_interface</a></li>
+                  
+                
+              </ul>
+          </div>
+          
+          
+		  <div class="col-xs-6 col-sm-3">
+              <h3>Procedures</h3>
+              <ul>
+                
+                  
+                    <li><a href='./proc/count_columns.html'>count_columns</a></li>
+                  
+                
+                  
+                    <li><a href='./proc/count_columns%7E2.html'>count_columns</a></li>
+                  
+                
+                  
+                    <li><a href='./proc/export_graph.html'>export_graph</a></li>
+                  
+                
+                  
+                    <li><a href='./proc/formetis_meshtonodal.html'>ForMETIS_MeshToNodal</a></li>
+                  
+                
+                  
+                    <li><a href='./proc/import_graph.html'>import_graph</a></li>
+                  
+                
+                  
+                    <li><a href='./proc/load_graph.html'>load_graph</a></li>
+                  
+                
+                  
+                    <li><a href='./interface/metis_free.html'>METIS_Free</a></li>
+                  
+                
+                  
+                    <li><a href='./interface/metis_meshtodual.html'>METIS_MeshToDual</a></li>
+                  
+                
+                  
+                    <li><a href='./interface/metis_meshtonodal.html'>METIS_MeshToNodal</a></li>
+                  
+                
+                  
+                    <li><a href='./interface/metis_nodend.html'>METIS_NodeND</a></li>
+                  
+                
+                  
+                    <li><a href="./lists/procedures.html"><em>All procedures&hellip;</em></a></li>
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+              </ul>
+          </div>
+          
+          
+		  <div class="col-xs-6 col-sm-3">
+              <h3>Derived Types</h3>
+              <ul>
+                
+                  
+                    <li><a href='./type/graph_type.html'>graph_type</a></li>
+                  
+                
+                  
+                    <li><a href='./type/metisgraph.html'>MetisGraph</a></li>
+                  
+                
+              </ul>
+          </div>
+          
+      </div>
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2019 </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> Fortran METIS Interface was developed by Ivan Pribec</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="./js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>
