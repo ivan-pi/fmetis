@@ -73,8 +73,6 @@
             <li><a href="../lists/types.html">Derived Types</a></li>
 				
 				
-            <li><a href="../lists/programs.html">Programs</a></li>
-				
             </ul>
             </li>
 
@@ -90,8 +88,6 @@
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
 
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
 
           </ul>
         
@@ -130,7 +126,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
 	  data-placement="bottom" data-html="true"
-	  title="23.6% of total for source files.">241 statements</a>
+	  title="36.2% of total for source files.">241 statements</a>
      </li> 
      
      
@@ -210,22 +206,6 @@
       <a class="list-group-item" href="../sourcefile/metis_io.f90.html">metis_io.f90</a>
       
       <a class="list-group-item" href="../sourcefile/metis_oo_interface.f90.html">metis_oo_interface.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/metis_tests.f90.html">metis_tests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/parmetis_interface.f90.html">parmetis_interface.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/test_nodend.f90.html">test_NodeND.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/test_partgraphkway.f90.html">test_PartGraphKway.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/test_partgraphrecursive1.f90.html">test_PartGraphRecursive1.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/test_partgraphrecursive2.f90.html">test_PartGraphRecursive2.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/test_partmeshnodal1.f90.html">test_PartMeshNodal1.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/test_partmeshnodal2.f90.html">test_PartMeshNodal2.f90</a>
       
     </div>
   </div>
@@ -563,152 +543,150 @@
 <a name="ln-180"></a><span class="k">        backspace</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="nb">stat</span><span class="p">)</span>
 <a name="ln-181"></a>    <span class="k">end function</span>
 <a name="ln-182"></a>
-<a name="ln-183"></a>
-<a name="ln-184"></a>
-<a name="ln-185"></a><span class="k">    subroutine </span><span class="n">read_graph</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">xadj</span><span class="p">,</span><span class="n">adjncy</span><span class="p">,</span><span class="n">numflag</span><span class="p">,</span><span class="n">vwgt</span><span class="p">,</span><span class="n">adjwgt</span><span class="p">,</span><span class="n">vsize</span><span class="p">)</span>
-<a name="ln-186"></a>        <span class="k">implicit none</span>
-<a name="ln-187"></a><span class="k">        </span><span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">unit</span>
-<a name="ln-188"></a>        <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="k">pointer</span> <span class="kd">::</span> <span class="n">xadj</span><span class="p">(:)</span>
-<a name="ln-189"></a>        <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="k">pointer</span> <span class="kd">::</span> <span class="n">adjncy</span><span class="p">(:)</span>
-<a name="ln-190"></a>        <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">numflag</span>
-<a name="ln-191"></a>        <span class="kt">integer</span><span class="p">,</span> <span class="k">pointer</span><span class="p">,</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">vwgt</span><span class="p">(:)</span>
-<a name="ln-192"></a>        <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="k">pointer</span><span class="p">,</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">adjwgt</span><span class="p">(:)</span>
-<a name="ln-193"></a>        <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="k">pointer</span><span class="p">,</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">vsize</span><span class="p">(:)</span>
-<a name="ln-194"></a>
-<a name="ln-195"></a>        <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="kd">::</span> <span class="n">c</span>
-<a name="ln-196"></a>        <span class="kt">integer</span> <span class="kd">::</span> <span class="n">ncol</span><span class="p">,</span> <span class="n">ios</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">rowcol</span><span class="p">,</span> <span class="n">j</span>
-<a name="ln-197"></a>        <span class="kt">logical</span> <span class="kd">::</span> <span class="n">lastwhite</span>
-<a name="ln-198"></a>
-<a name="ln-199"></a>        <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="kd">::</span> <span class="n">cfmt</span>
-<a name="ln-200"></a>        <span class="kt">integer</span> <span class="kd">::</span> <span class="n">nvtxs</span><span class="p">,</span> <span class="n">nedgs</span><span class="p">,</span> <span class="n">ncon</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">numflag_</span>
-<a name="ln-201"></a>
-<a name="ln-202"></a>        <span class="n">numflag_</span> <span class="o">=</span> <span class="mi">1</span> <span class="c">! Assume Fortran numbering by default</span>
-<a name="ln-203"></a>        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">numflag</span><span class="p">))</span> <span class="n">numflag_</span> <span class="o">=</span> <span class="n">numflag</span>
-<a name="ln-204"></a>
-<a name="ln-205"></a>        <span class="c">! Determine number of columns in header line</span>
-<a name="ln-206"></a>        <span class="n">ncol</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="ln-207"></a>        <span class="n">lastwhite</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
-<a name="ln-208"></a>        <span class="k">do</span>
-<a name="ln-209"></a><span class="k">            read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;no&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="n">c</span>
-<a name="ln-210"></a>            <span class="c">! if (iachar(c) == 37) then</span>
-<a name="ln-211"></a>            <span class="c">!     read(unit,*) ! skipline</span>
-<a name="ln-212"></a>            <span class="c">!     print *, &quot;Skipped line&quot;</span>
-<a name="ln-213"></a>            <span class="c">!     cycle</span>
-<a name="ln-214"></a>            <span class="c">! end if</span>
-<a name="ln-215"></a>            <span class="k">if</span> <span class="p">(</span><span class="n">ios</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">exit</span>
-<a name="ln-216"></a><span class="k">            if</span> <span class="p">(</span><span class="n">lastwhite</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="p">.</span><span class="nb">not</span><span class="p">.</span> <span class="n">whitechar</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="n">ncol</span> <span class="o">=</span> <span class="n">ncol</span> <span class="o">+</span> <span class="mi">1</span>
-<a name="ln-217"></a>            <span class="n">lastwhite</span> <span class="o">=</span> <span class="n">whitechar</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-<a name="ln-218"></a>        <span class="k">end do</span>
+<a name="ln-183"></a><span class="k">    subroutine </span><span class="n">read_graph</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">xadj</span><span class="p">,</span><span class="n">adjncy</span><span class="p">,</span><span class="n">numflag</span><span class="p">,</span><span class="n">vwgt</span><span class="p">,</span><span class="n">adjwgt</span><span class="p">,</span><span class="n">vsize</span><span class="p">)</span>
+<a name="ln-184"></a>        <span class="k">implicit none</span>
+<a name="ln-185"></a><span class="k">        </span><span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">unit</span>
+<a name="ln-186"></a>        <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="k">pointer</span> <span class="kd">::</span> <span class="n">xadj</span><span class="p">(:)</span>
+<a name="ln-187"></a>        <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="k">pointer</span> <span class="kd">::</span> <span class="n">adjncy</span><span class="p">(:)</span>
+<a name="ln-188"></a>        <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">numflag</span>
+<a name="ln-189"></a>        <span class="kt">integer</span><span class="p">,</span> <span class="k">pointer</span><span class="p">,</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">vwgt</span><span class="p">(:)</span>
+<a name="ln-190"></a>        <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="k">pointer</span><span class="p">,</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">adjwgt</span><span class="p">(:)</span>
+<a name="ln-191"></a>        <span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="k">pointer</span><span class="p">,</span> <span class="k">optional</span> <span class="kd">::</span> <span class="n">vsize</span><span class="p">(:)</span>
+<a name="ln-192"></a>
+<a name="ln-193"></a>        <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="kd">::</span> <span class="n">c</span>
+<a name="ln-194"></a>        <span class="kt">integer</span> <span class="kd">::</span> <span class="n">ncol</span><span class="p">,</span> <span class="n">ios</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">rowcol</span><span class="p">,</span> <span class="n">j</span>
+<a name="ln-195"></a>        <span class="kt">logical</span> <span class="kd">::</span> <span class="n">lastwhite</span>
+<a name="ln-196"></a>
+<a name="ln-197"></a>        <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="kd">::</span> <span class="n">cfmt</span>
+<a name="ln-198"></a>        <span class="kt">integer</span> <span class="kd">::</span> <span class="n">nvtxs</span><span class="p">,</span> <span class="n">nedgs</span><span class="p">,</span> <span class="n">ncon</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">numflag_</span>
+<a name="ln-199"></a>
+<a name="ln-200"></a>        <span class="n">numflag_</span> <span class="o">=</span> <span class="mi">1</span> <span class="c">! Assume Fortran numbering by default</span>
+<a name="ln-201"></a>        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">numflag</span><span class="p">))</span> <span class="n">numflag_</span> <span class="o">=</span> <span class="n">numflag</span>
+<a name="ln-202"></a>
+<a name="ln-203"></a>        <span class="c">! Determine number of columns in header line</span>
+<a name="ln-204"></a>        <span class="n">ncol</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="ln-205"></a>        <span class="n">lastwhite</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a name="ln-206"></a>        <span class="k">do</span>
+<a name="ln-207"></a><span class="k">            read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;no&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="n">c</span>
+<a name="ln-208"></a>            <span class="c">! if (iachar(c) == 37) then</span>
+<a name="ln-209"></a>            <span class="c">!     read(unit,*) ! skipline</span>
+<a name="ln-210"></a>            <span class="c">!     print *, &quot;Skipped line&quot;</span>
+<a name="ln-211"></a>            <span class="c">!     cycle</span>
+<a name="ln-212"></a>            <span class="c">! end if</span>
+<a name="ln-213"></a>            <span class="k">if</span> <span class="p">(</span><span class="n">ios</span> <span class="o">/=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">exit</span>
+<a name="ln-214"></a><span class="k">            if</span> <span class="p">(</span><span class="n">lastwhite</span> <span class="p">.</span><span class="nb">and</span><span class="p">.</span> <span class="p">.</span><span class="nb">not</span><span class="p">.</span> <span class="n">whitechar</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="n">ncol</span> <span class="o">=</span> <span class="n">ncol</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="ln-215"></a>            <span class="n">lastwhite</span> <span class="o">=</span> <span class="n">whitechar</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<a name="ln-216"></a>        <span class="k">end do</span>
+<a name="ln-217"></a>
+<a name="ln-218"></a><span class="k">        print</span> <span class="o">*</span><span class="p">,</span> <span class="s2">&quot;Number of columns in header = &quot;</span><span class="p">,</span> <span class="n">ncol</span>
 <a name="ln-219"></a>
-<a name="ln-220"></a><span class="k">        print</span> <span class="o">*</span><span class="p">,</span> <span class="s2">&quot;Number of columns in header = &quot;</span><span class="p">,</span> <span class="n">ncol</span>
-<a name="ln-221"></a>
-<a name="ln-222"></a>        <span class="k">rewind</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
-<a name="ln-223"></a>        <span class="c">! do</span>
-<a name="ln-224"></a>        <span class="c">!     read(unit,&#39;(a)&#39;,iostat=ios) c</span>
-<a name="ln-225"></a>        <span class="c">!     if (iachar(c) == 37) then</span>
-<a name="ln-226"></a>        <span class="c">!         print *, &quot;Skipped line&quot;</span>
-<a name="ln-227"></a>        <span class="c">!         cycle</span>
-<a name="ln-228"></a>        <span class="c">!     else</span>
-<a name="ln-229"></a>        <span class="c">!         backspace(unit)</span>
-<a name="ln-230"></a>        <span class="c">!         exit</span>
-<a name="ln-231"></a>        <span class="c">!     end if</span>
-<a name="ln-232"></a>        <span class="c">! end do    </span>
-<a name="ln-233"></a>
-<a name="ln-234"></a>        <span class="c">! Parse values in header line</span>
-<a name="ln-235"></a>        <span class="n">ncon</span> <span class="o">=</span> <span class="mi">1</span>
-<a name="ln-236"></a>        <span class="n">cfmt</span> <span class="o">=</span> <span class="s1">&#39;000&#39;</span>
-<a name="ln-237"></a>        <span class="k">select case</span><span class="p">(</span><span class="n">ncol</span><span class="p">)</span>
-<a name="ln-238"></a>        <span class="k">case</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<a name="ln-239"></a>            <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="n">nvtxs</span><span class="p">,</span> <span class="n">nedgs</span>
-<a name="ln-240"></a>        <span class="k">case</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<a name="ln-241"></a>            <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="n">nvtxs</span><span class="p">,</span> <span class="n">nedgs</span><span class="p">,</span> <span class="n">cfmt</span>
-<a name="ln-242"></a>        <span class="k">case</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<a name="ln-243"></a>            <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="n">nvtxs</span><span class="p">,</span> <span class="n">nedgs</span><span class="p">,</span> <span class="n">cfmt</span><span class="p">,</span> <span class="n">ncon</span>
-<a name="ln-244"></a>            <span class="k">print</span> <span class="o">*</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span>
-<a name="ln-245"></a>        <span class="k">case </span><span class="n">default</span>
-<a name="ln-246"></a>            <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s2">&quot;[load_graph]: incorrect file&quot;</span>
-<a name="ln-247"></a>            <span class="k">stop</span>
-<a name="ln-248"></a><span class="k">        end select</span>
-<a name="ln-249"></a><span class="k">        read</span><span class="p">(</span><span class="n">cfmt</span><span class="p">,</span><span class="s1">&#39;(b3.3)&#39;</span><span class="p">)</span> <span class="n">fmt</span>
-<a name="ln-250"></a>        <span class="k">print</span> <span class="o">*</span><span class="p">,</span> <span class="n">nvtxs</span><span class="p">,</span> <span class="n">nedgs</span><span class="p">,</span> <span class="n">cfmt</span><span class="p">,</span> <span class="n">ncon</span>
-<a name="ln-251"></a>        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(A,B3.3)&#39;</span><span class="p">)</span> <span class="s2">&quot;fmt = &quot;</span><span class="p">,</span> <span class="n">fmt</span>
-<a name="ln-252"></a>
-<a name="ln-253"></a>        <span class="c">! Allocate necessary space</span>
-<a name="ln-254"></a>        <span class="k">allocate</span><span class="p">(</span><span class="n">xadj</span><span class="p">(</span><span class="n">nvtxs</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<a name="ln-255"></a>        <span class="k">allocate</span><span class="p">(</span><span class="n">adjncy</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">nedgs</span><span class="p">))</span>
-<a name="ln-256"></a>
-<a name="ln-257"></a>        <span class="k">if</span> <span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="k">allocate</span><span class="p">(</span><span class="n">adjwgt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">nedgs</span><span class="p">))</span>
-<a name="ln-258"></a>        <span class="k">if</span> <span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="k">allocate</span><span class="p">(</span><span class="n">vwgt</span><span class="p">(</span><span class="n">nvtxs</span><span class="o">*</span><span class="n">ncon</span><span class="p">))</span>
-<a name="ln-259"></a>        <span class="k">if</span> <span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="k">allocate</span><span class="p">(</span><span class="n">vsize</span><span class="p">(</span><span class="n">nvtxs</span><span class="p">))</span>
-<a name="ln-260"></a>
-<a name="ln-261"></a>        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="nb">associated</span><span class="p">(</span><span class="n">vsize</span><span class="p">),</span><span class="nb">associated</span><span class="p">(</span><span class="n">vwgt</span><span class="p">),</span><span class="nb">associated</span><span class="p">(</span><span class="n">adjwgt</span><span class="p">)</span>
-<a name="ln-262"></a>        <span class="c">! stop</span>
-<a name="ln-263"></a>
-<a name="ln-264"></a>
-<a name="ln-265"></a>        <span class="n">xadj</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
-<a name="ln-266"></a>        <span class="k">select case</span><span class="p">(</span><span class="n">fmt</span><span class="p">)</span>
-<a name="ln-267"></a>        <span class="k">case</span> <span class="p">(</span><span class="n">b</span><span class="s1">&#39;000&#39;</span><span class="p">)</span>
-<a name="ln-268"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
-<a name="ln-269"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span>
-<a name="ln-270"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
-<a name="ln-271"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">adjncy</span><span class="p">(</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<a name="ln-272"></a>            <span class="k">end do</span>
-<a name="ln-273"></a><span class="k">        case</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;001&#39;</span><span class="p">)</span>
-<a name="ln-274"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
-<a name="ln-275"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-<a name="ln-276"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
-<a name="ln-277"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="p">(</span><span class="n">adjncy</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">adjwgt</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">j</span><span class="o">=</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<a name="ln-278"></a>            <span class="k">end do</span>
-<a name="ln-279"></a><span class="k">        case</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;010&#39;</span><span class="p">)</span>
-<a name="ln-280"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
-<a name="ln-281"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="o">-</span> <span class="n">ncon</span>
-<a name="ln-282"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
-<a name="ln-283"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">vwgt</span><span class="p">((</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="mi">1</span><span class="p">:(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="n">ncon</span><span class="p">),</span> <span class="n">adjncy</span><span class="p">(</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<a name="ln-284"></a>            <span class="k">end do</span>
-<a name="ln-285"></a><span class="k">        case</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;100&#39;</span><span class="p">)</span>
-<a name="ln-286"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
-<a name="ln-287"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-<a name="ln-288"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
-<a name="ln-289"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">vsize</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">adjncy</span><span class="p">(</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<a name="ln-290"></a>            <span class="k">end do</span>
-<a name="ln-291"></a><span class="k">        case</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;011&#39;</span><span class="p">)</span>
-<a name="ln-292"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
-<a name="ln-293"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="p">(</span><span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="o">-</span> <span class="n">ncon</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-<a name="ln-294"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
-<a name="ln-295"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">vwgt</span><span class="p">((</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="mi">1</span><span class="p">:(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="n">ncon</span><span class="p">),</span> <span class="p">(</span><span class="n">adjncy</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">adjwgt</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">j</span><span class="o">=</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<a name="ln-296"></a>            <span class="k">end do</span>
-<a name="ln-297"></a><span class="k">        case</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;110&#39;</span><span class="p">)</span>
-<a name="ln-298"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
-<a name="ln-299"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">ncon</span>
-<a name="ln-300"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
-<a name="ln-301"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">vsize</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">vwgt</span><span class="p">((</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="mi">1</span><span class="p">:(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="n">ncon</span><span class="p">),</span> <span class="n">adjncy</span><span class="p">(</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<a name="ln-302"></a>            <span class="k">end do</span>
-<a name="ln-303"></a><span class="k">        case</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;101&#39;</span><span class="p">)</span>
-<a name="ln-304"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
-<a name="ln-305"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="p">(</span><span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-<a name="ln-306"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
-<a name="ln-307"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">vsize</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="p">(</span><span class="n">adjncy</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">adjwgt</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">j</span><span class="o">=</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<a name="ln-308"></a>            <span class="k">end do</span>
-<a name="ln-309"></a><span class="k">        case</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;111&#39;</span><span class="p">)</span>
-<a name="ln-310"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
-<a name="ln-311"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="p">(</span><span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">ncon</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-<a name="ln-312"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
-<a name="ln-313"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">vsize</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">vwgt</span><span class="p">((</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="mi">1</span><span class="p">:(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="n">ncon</span><span class="p">),</span> <span class="p">(</span><span class="n">adjncy</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">adjwgt</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">j</span><span class="o">=</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<a name="ln-314"></a>            <span class="k">end do</span>
-<a name="ln-315"></a><span class="k">        case </span><span class="n">default</span>
-<a name="ln-316"></a>            <span class="k">print</span> <span class="o">*</span><span class="p">,</span> <span class="s2">&quot;[read_graph] should not be here&quot;</span>
-<a name="ln-317"></a>            <span class="k">stop</span>
-<a name="ln-318"></a><span class="k">        end select</span>
-<a name="ln-319"></a>
-<a name="ln-320"></a><span class="k">        if</span> <span class="p">(</span><span class="n">numflag_</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
-<a name="ln-321"></a><span class="k">            </span><span class="n">adjncy</span> <span class="o">=</span> <span class="n">adjncy</span> <span class="o">-</span> <span class="mi">1</span>
-<a name="ln-322"></a>        <span class="k">else</span>
-<a name="ln-323"></a><span class="k">            </span><span class="n">xadj</span> <span class="o">=</span> <span class="n">xadj</span> <span class="o">+</span> <span class="mi">1</span>
-<a name="ln-324"></a>        <span class="k">end if</span>
+<a name="ln-220"></a>        <span class="k">rewind</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
+<a name="ln-221"></a>        <span class="c">! do</span>
+<a name="ln-222"></a>        <span class="c">!     read(unit,&#39;(a)&#39;,iostat=ios) c</span>
+<a name="ln-223"></a>        <span class="c">!     if (iachar(c) == 37) then</span>
+<a name="ln-224"></a>        <span class="c">!         print *, &quot;Skipped line&quot;</span>
+<a name="ln-225"></a>        <span class="c">!         cycle</span>
+<a name="ln-226"></a>        <span class="c">!     else</span>
+<a name="ln-227"></a>        <span class="c">!         backspace(unit)</span>
+<a name="ln-228"></a>        <span class="c">!         exit</span>
+<a name="ln-229"></a>        <span class="c">!     end if</span>
+<a name="ln-230"></a>        <span class="c">! end do    </span>
+<a name="ln-231"></a>
+<a name="ln-232"></a>        <span class="c">! Parse values in header line</span>
+<a name="ln-233"></a>        <span class="n">ncon</span> <span class="o">=</span> <span class="mi">1</span>
+<a name="ln-234"></a>        <span class="n">cfmt</span> <span class="o">=</span> <span class="s1">&#39;000&#39;</span>
+<a name="ln-235"></a>        <span class="k">select case</span><span class="p">(</span><span class="n">ncol</span><span class="p">)</span>
+<a name="ln-236"></a>        <span class="k">case</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<a name="ln-237"></a>            <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="n">nvtxs</span><span class="p">,</span> <span class="n">nedgs</span>
+<a name="ln-238"></a>        <span class="k">case</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a name="ln-239"></a>            <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="n">nvtxs</span><span class="p">,</span> <span class="n">nedgs</span><span class="p">,</span> <span class="n">cfmt</span>
+<a name="ln-240"></a>        <span class="k">case</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<a name="ln-241"></a>            <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="n">nvtxs</span><span class="p">,</span> <span class="n">nedgs</span><span class="p">,</span> <span class="n">cfmt</span><span class="p">,</span> <span class="n">ncon</span>
+<a name="ln-242"></a>            <span class="k">print</span> <span class="o">*</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span>
+<a name="ln-243"></a>        <span class="k">case </span><span class="n">default</span>
+<a name="ln-244"></a>            <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s2">&quot;[load_graph]: incorrect file&quot;</span>
+<a name="ln-245"></a>            <span class="k">stop</span>
+<a name="ln-246"></a><span class="k">        end select</span>
+<a name="ln-247"></a><span class="k">        read</span><span class="p">(</span><span class="n">cfmt</span><span class="p">,</span><span class="s1">&#39;(b3.3)&#39;</span><span class="p">)</span> <span class="n">fmt</span>
+<a name="ln-248"></a>        <span class="k">print</span> <span class="o">*</span><span class="p">,</span> <span class="n">nvtxs</span><span class="p">,</span> <span class="n">nedgs</span><span class="p">,</span> <span class="n">cfmt</span><span class="p">,</span> <span class="n">ncon</span>
+<a name="ln-249"></a>        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(A,B3.3)&#39;</span><span class="p">)</span> <span class="s2">&quot;fmt = &quot;</span><span class="p">,</span> <span class="n">fmt</span>
+<a name="ln-250"></a>
+<a name="ln-251"></a>        <span class="c">! Allocate necessary space</span>
+<a name="ln-252"></a>        <span class="k">allocate</span><span class="p">(</span><span class="n">xadj</span><span class="p">(</span><span class="n">nvtxs</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-253"></a>        <span class="k">allocate</span><span class="p">(</span><span class="n">adjncy</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">nedgs</span><span class="p">))</span>
+<a name="ln-254"></a>
+<a name="ln-255"></a>        <span class="k">if</span> <span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="k">allocate</span><span class="p">(</span><span class="n">adjwgt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">nedgs</span><span class="p">))</span>
+<a name="ln-256"></a>        <span class="k">if</span> <span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="k">allocate</span><span class="p">(</span><span class="n">vwgt</span><span class="p">(</span><span class="n">nvtxs</span><span class="o">*</span><span class="n">ncon</span><span class="p">))</span>
+<a name="ln-257"></a>        <span class="k">if</span> <span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="k">allocate</span><span class="p">(</span><span class="n">vsize</span><span class="p">(</span><span class="n">nvtxs</span><span class="p">))</span>
+<a name="ln-258"></a>
+<a name="ln-259"></a>        <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="nb">associated</span><span class="p">(</span><span class="n">vsize</span><span class="p">),</span><span class="nb">associated</span><span class="p">(</span><span class="n">vwgt</span><span class="p">),</span><span class="nb">associated</span><span class="p">(</span><span class="n">adjwgt</span><span class="p">)</span>
+<a name="ln-260"></a>        <span class="c">! stop</span>
+<a name="ln-261"></a>
+<a name="ln-262"></a>
+<a name="ln-263"></a>        <span class="n">xadj</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+<a name="ln-264"></a>        <span class="k">select case</span><span class="p">(</span><span class="n">fmt</span><span class="p">)</span>
+<a name="ln-265"></a>        <span class="k">case</span> <span class="p">(</span><span class="n">b</span><span class="s1">&#39;000&#39;</span><span class="p">)</span>
+<a name="ln-266"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
+<a name="ln-267"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span>
+<a name="ln-268"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
+<a name="ln-269"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">adjncy</span><span class="p">(</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-270"></a>            <span class="k">end do</span>
+<a name="ln-271"></a><span class="k">        case</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;001&#39;</span><span class="p">)</span>
+<a name="ln-272"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
+<a name="ln-273"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<a name="ln-274"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
+<a name="ln-275"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="p">(</span><span class="n">adjncy</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">adjwgt</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">j</span><span class="o">=</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-276"></a>            <span class="k">end do</span>
+<a name="ln-277"></a><span class="k">        case</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;010&#39;</span><span class="p">)</span>
+<a name="ln-278"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
+<a name="ln-279"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="o">-</span> <span class="n">ncon</span>
+<a name="ln-280"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
+<a name="ln-281"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">vwgt</span><span class="p">((</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="mi">1</span><span class="p">:(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="n">ncon</span><span class="p">),</span> <span class="n">adjncy</span><span class="p">(</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-282"></a>            <span class="k">end do</span>
+<a name="ln-283"></a><span class="k">        case</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;100&#39;</span><span class="p">)</span>
+<a name="ln-284"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
+<a name="ln-285"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<a name="ln-286"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
+<a name="ln-287"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">vsize</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">adjncy</span><span class="p">(</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-288"></a>            <span class="k">end do</span>
+<a name="ln-289"></a><span class="k">        case</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;011&#39;</span><span class="p">)</span>
+<a name="ln-290"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
+<a name="ln-291"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="p">(</span><span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="o">-</span> <span class="n">ncon</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<a name="ln-292"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
+<a name="ln-293"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">vwgt</span><span class="p">((</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="mi">1</span><span class="p">:(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="n">ncon</span><span class="p">),</span> <span class="p">(</span><span class="n">adjncy</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">adjwgt</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">j</span><span class="o">=</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-294"></a>            <span class="k">end do</span>
+<a name="ln-295"></a><span class="k">        case</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;110&#39;</span><span class="p">)</span>
+<a name="ln-296"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
+<a name="ln-297"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">ncon</span>
+<a name="ln-298"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
+<a name="ln-299"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">vsize</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">vwgt</span><span class="p">((</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="mi">1</span><span class="p">:(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="n">ncon</span><span class="p">),</span> <span class="n">adjncy</span><span class="p">(</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-300"></a>            <span class="k">end do</span>
+<a name="ln-301"></a><span class="k">        case</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;101&#39;</span><span class="p">)</span>
+<a name="ln-302"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
+<a name="ln-303"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="p">(</span><span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<a name="ln-304"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
+<a name="ln-305"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">vsize</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="p">(</span><span class="n">adjncy</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">adjwgt</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">j</span><span class="o">=</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-306"></a>            <span class="k">end do</span>
+<a name="ln-307"></a><span class="k">        case</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;111&#39;</span><span class="p">)</span>
+<a name="ln-308"></a>            <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nvtxs</span>
+<a name="ln-309"></a>                <span class="n">rowcol</span> <span class="o">=</span> <span class="p">(</span><span class="n">count_columns</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="nb">stat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">ncon</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<a name="ln-310"></a>                <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">rowcol</span>
+<a name="ln-311"></a>                <span class="k">read</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">vsize</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">vwgt</span><span class="p">((</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="mi">1</span><span class="p">:(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ncon</span><span class="o">+</span><span class="n">ncon</span><span class="p">),</span> <span class="p">(</span><span class="n">adjncy</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">adjwgt</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">j</span><span class="o">=</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">xadj</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-312"></a>            <span class="k">end do</span>
+<a name="ln-313"></a><span class="k">        case </span><span class="n">default</span>
+<a name="ln-314"></a>            <span class="k">print</span> <span class="o">*</span><span class="p">,</span> <span class="s2">&quot;[read_graph] should not be here&quot;</span>
+<a name="ln-315"></a>            <span class="k">stop</span>
+<a name="ln-316"></a><span class="k">        end select</span>
+<a name="ln-317"></a>
+<a name="ln-318"></a><span class="k">        if</span> <span class="p">(</span><span class="n">numflag_</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-319"></a><span class="k">            </span><span class="n">adjncy</span> <span class="o">=</span> <span class="n">adjncy</span> <span class="o">-</span> <span class="mi">1</span>
+<a name="ln-320"></a>        <span class="k">else</span>
+<a name="ln-321"></a><span class="k">            </span><span class="n">xadj</span> <span class="o">=</span> <span class="n">xadj</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="ln-322"></a>        <span class="k">end if</span>
+<a name="ln-323"></a>
+<a name="ln-324"></a><span class="k">    end subroutine</span>
 <a name="ln-325"></a>
-<a name="ln-326"></a><span class="k">    end subroutine</span>
-<a name="ln-327"></a>
-<a name="ln-328"></a><span class="k">end module</span>
+<a name="ln-326"></a><span class="k">end module</span>
 </pre></div>
 
     </section>
@@ -731,22 +709,6 @@
       <a class="list-group-item" href="../sourcefile/metis_io.f90.html">metis_io.f90</a>
       
       <a class="list-group-item" href="../sourcefile/metis_oo_interface.f90.html">metis_oo_interface.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/metis_tests.f90.html">metis_tests.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/parmetis_interface.f90.html">parmetis_interface.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/test_nodend.f90.html">test_NodeND.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/test_partgraphkway.f90.html">test_PartGraphKway.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/test_partgraphrecursive1.f90.html">test_PartGraphRecursive1.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/test_partgraphrecursive2.f90.html">test_PartGraphRecursive2.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/test_partmeshnodal1.f90.html">test_PartMeshNodal1.f90</a>
-      
-      <a class="list-group-item" href="../sourcefile/test_partmeshnodal2.f90.html">test_PartMeshNodal2.f90</a>
       
     </div>
   </div>

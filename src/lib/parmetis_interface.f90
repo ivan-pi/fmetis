@@ -8,6 +8,13 @@
 ! http://glaros.dtc.umn.edu/gkhome/metis/parmetis/download
 ! http://glaros.dtc.umn.edu/gkhome/fetch/sw/parmetis/manual.pdf
 
+!> author: Ivan Pribec
+!  date: 06/2019
+!  license: MIT
+!  graph: false
+!
+! A Fortran interface to the ParMETIS graph partitioning library.
+!
 module parmetis_interface
 
     implicit none

@@ -5,6 +5,11 @@
 ! This software may be modified and distributed under the terms
 ! of the MIT license.  See the LICENSE file for details.
 
+!*****************************************************************************************
+!> author: Ivan Pribec
+!  date: 7/2018
+!  license: MIT
+!
 module metis_enum
 
     implicit none

@@ -1,9 +1,8 @@
 module oo_tests
 
     use metis_oo_interface
-    use metis_interface
-    use metis_enum
-
+    ! use metis_interface
+    ! use metis_enum
 
 contains
 
@@ -11,12 +10,7 @@ contains
 
         type(graph_type) :: graph
 
-        ! call import_graph("/home/ipribec/Programs/metis-5.1.0/graphs/copter2.graph", graph)
-
-
-        ! call import_graph('/home/ipribec/Programs/fmetis/graphs/multi_constraint.graph',graph)
-
-        call import_graph('/home/ipribec/Programs/fmetis/graphs/fdm.graph',graph)
+        call import_graph('fdm.graph',graph)
 
         print *, size(graph%xadj), size(graph%adjncy)
 
@@ -24,7 +18,7 @@ contains
         print *, "adjncy = ", graph%adjncy
         print *, "vwgt = ", graph%vwgt
 
-        call export_graph('fdm.graph',graph)
+        call export_graph('fdm_copy.graph',graph)
 
     end subroutine
 

@@ -180,8 +180,6 @@ contains
         backspace(unit,iostat=stat)
     end function
 
-
-
     subroutine read_graph(unit,xadj,adjncy,numflag,vwgt,adjwgt,vsize)
         implicit none
         integer, intent(in) :: unit
