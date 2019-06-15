@@ -3,7 +3,7 @@
 A modern Fortran interface to the [METIS software package](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview) for partitioning unstructured graphs, partitioning meshes, and computing fill-reducing orderings of sparse matrices.
 
 * [Getting started](#getting-started)
-* [Why Fortran METIS Interface](#why-fortran-metis-interface)
+* [Why Fortran METIS Interface?](#why-fortran-metis-interface)
 * [METIS API](#metis-api)
 * [Object-oriented API](#object-oriented-api)
 * [Example usage](#example-usage)
@@ -69,7 +69,7 @@ All functions return an integer status flag `ierr` that can be checked for succe
 
 ## Object-oriented API
 
-The object-oriented API is currently under development.
+The object-oriented API is still under development.
 
 ## Example usage
 
