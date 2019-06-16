@@ -62,7 +62,7 @@ include_directories(${METIS_INCLUDE})
 link_directories (${METIS_LIB})
 
 # Library to archive (libfmetis.a)
-add_library(fmetis src/lib/metis_interface.f90 src/lib/metis_enum.f90 src/lib/metis_io.f90 src/lib/metis_oo_interface.f90)
+add_library(fmetis src/lib/metis_interface.f90 src/lib/metis_enum.f90 src/lib/metis_oo_interface.f90)
 target_link_libraries(fmetis metis)
 
 # Tests
