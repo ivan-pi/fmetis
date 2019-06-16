@@ -323,4 +323,75 @@ contains
 
     end subroutine
 
+    subroutine print_metis_options(opts,unit)
+        use iso_fortran_env, only: output_unit
+        integer, intent(in) :: opts(0:)
+        integer, intent(in), optional :: unit
+        integer :: i, unit_
+
+        unit_ = output_unit ! standard output
+        if (present(unit)) unit_ = unit
+
+        do i = 0, METIS_NOPTIONS-1
+            write(unit_,'("Option ",I2,":",I3)') i, opts(i)
+        end do
+    end subroutine
+
+    function FMETIS_MeshToNodal(ne,nn,eptr,eind,numflag,xadj,adjncy,stat) result(ierr)
+        use iso_c_binding, only : c_int, c_ptr, c_f_pointer
+        integer(c_int), intent(in) :: ne
+        integer(c_int), intent(in) :: nn
+        integer(c_int), intent(in) :: eptr(ne+1)
+        integer(c_int), intent(in) :: eind(:)
+        integer(c_int), intent(in) :: numflag
+        integer(c_int), intent(out), allocatable :: xadj(:)
+        integer(c_int), intent(out), allocatable :: adjncy(:)
+        integer(c_int), intent(out), optional :: stat ! stat = 0 indicates successful allocation and correct arguments
+
+        ! Result
+        integer(c_int) :: ierr
+
+        integer(c_int) :: stat_
+        character(len=80) :: errmsg_
+        type(c_ptr) :: c_xadj, c_adjncy
+        integer(c_int), pointer :: f_xadj(:) => null(), f_adjncy(:) => null()
+
+        ierr = METIS_MeshToNodal(ne,nn,eptr,eind,numflag,c_xadj,c_adjncy)
+        if (ierr /= METIS_OK) return
+
+        call c_f_pointer(c_xadj,f_xadj,shape=[nn+1])
+        
+        select case(numflag)
+        case(0)
+            call c_f_pointer(c_adjncy,f_adjncy,shape=[f_xadj(nn+1)])
+        case(1)
+            call c_f_pointer(c_adjncy,f_adjncy,shape=[f_xadj(nn+1)-1])
+        case default
+            write(*,*) "[FMETIS_MeshToNodal] Wrong numflag argument! Only 0 or 1 are allowed. Got ", numflag, " instead."
+            if (present(stat)) stat = -1
+            return
+        end select
+
+        allocate(xadj,source=f_xadj,stat=stat_,errmsg=errmsg_)
+        if (present(stat)) stat = stat_
+        if (stat_ > 0) then
+            write(*,*) "[FMETIS_MeshToNodal] Allocation of xadj failed with error: ", stat_, ", "//trim(errmsg_)//"."
+            return
+        end if
+
+        allocate(adjncy,source=f_adjncy,stat=stat_,errmsg=errmsg_)
+        if (present(stat)) stat = stat_
+        if (stat_ > 0) then
+            write(*,*) "[FMETIS_MeshToNodal] Allocation of adjncy failed with error: ", stat_, ", "//trim(errmsg_)//"."
+            return
+        end if
+
+        ierr = METIS_Free(c_xadj)
+        if (ierr /= METIS_OK) return
+
+        ierr = METIS_Free(c_adjncy)
+        if (ierr /= METIS_OK) return
+
+    end function
+
 end module

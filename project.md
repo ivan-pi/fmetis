@@ -15,7 +15,6 @@ display: public
 source: true
 graph: true
 preprocess: false
-exclude_dir: ./src/tests
 ---
 
 # Brief description
