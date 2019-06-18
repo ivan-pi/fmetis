@@ -13,9 +13,12 @@ A modern Fortran interface to the [METIS software package](http://glaros.dtc.umn
 
 ## Getting started
 
-Download and install METIS according to instructions found [here](http://glaros.dtc.umn.edu/gkhome/metis/metis/download).
+To build and install METIS from source follow the instructions found [here](http://glaros.dtc.umn.edu/gkhome/metis/metis/download). On Debian, Ubuntu and related Linux distributions you can install the METIS library, header file, and binaries using:
+```
+apt-get install libmetis-dev libmetis5 metis
+```
 
-Download and build the Fortran interface:
+Next, download and build the Fortran interface:
 
 ```
 git clone https://github.com/ivan-pi/fmetis
