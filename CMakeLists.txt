@@ -23,7 +23,7 @@ endif ()
 if (CMAKE_Fortran_COMPILER_ID MATCHES GNU)
     set(common "-Wall")
     set(CMAKE_Fortran_FLAGS_RELEASE "${common} -O3 -march=native")
-    set(CMAKE_Fortran_FLAGS_DEBUG   "${common} -O0 -g -C -fbacktrace -fdefault-real-8")
+    set(CMAKE_Fortran_FLAGS_DEBUG   "${common} -O0 -g -C -fbacktrace")
 endif()
 
 # Compiler flags for ifort.
