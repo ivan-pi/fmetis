@@ -21,14 +21,14 @@ endif ()
 
 # Compiler flags for gfortran.
 if (CMAKE_Fortran_COMPILER_ID MATCHES GNU)
-    set(common "-std=f2018 -Wall")
+    set(common "-Wall")
     set(CMAKE_Fortran_FLAGS_RELEASE "${common} -O3 -march=native")
     set(CMAKE_Fortran_FLAGS_DEBUG   "${common} -O0 -g -C -fbacktrace -fdefault-real-8")
 endif()
 
 # Compiler flags for ifort.
 if (CMAKE_Fortran_COMPILER_ID MATCHES Intel)
-    set(common "-std18 -warn all")
+    set(common "-warn all")
     set(CMAKE_Fortran_FLAGS_RELEASE "${common} -O3")
     set(CMAKE_Fortran_FLAGS_DEBUG   "${common} -O0 -g -C -traceback")
 endif ()
