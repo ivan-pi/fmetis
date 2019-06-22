@@ -98,4 +98,7 @@ The Fortran METIS Interface source code, related files and documentation are dis
 ## To-Do List
 - [ ] Provide usage examples for partitioning graphs, partitioning meshes and computing sparse matrix reorderings
 - [ ] Provide examples for reading and writing METIS graph and mesh files
-- [ ] Move documentation to a separate branch
+
+---
+
+[Go to top](#fortran-metis-interface)
