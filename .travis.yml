@@ -1,4 +1,4 @@
-language: cpp
+language: c
 sudo: false
 
 matrix:
@@ -10,6 +10,8 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - libmetis5
+            - libmetis-dev
+            - metis
             - cmake
             - gfortran-9
 
@@ -25,5 +27,5 @@ matrix:
 
       script:
         - mkdir build && pushd build
-        - cmake -DCMAKE_INSTALL_PREFIX=~/.local ..
+        - FC=gfortran-9 cmake -DCMAKE_INSTALL_PREFIX=~/.local ..
         - make install && ctest --output-on-failure
