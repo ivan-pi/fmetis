@@ -270,7 +270,7 @@ public function METIS_PartMeshNodal(ne, nn, eptr, eind, vwgt, vsize, nparts, tpw
   
 <tr>
   
-  <td><span class="anchor" id="variable-ne%7E2"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-ne%7E2"></span>integer(kind=idx_t),</td>
   <td>intent(in)</td>
   <td></td>
   
@@ -285,7 +285,7 @@ public function METIS_PartMeshNodal(ne, nn, eptr, eind, vwgt, vsize, nparts, tpw
   
 <tr>
   
-  <td><span class="anchor" id="variable-nn%7E2"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-nn%7E2"></span>integer(kind=idx_t),</td>
   <td>intent(in)</td>
   <td></td>
   
@@ -300,7 +300,7 @@ public function METIS_PartMeshNodal(ne, nn, eptr, eind, vwgt, vsize, nparts, tpw
   
 <tr>
   
-  <td><span class="anchor" id="variable-eptr%7E2"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-eptr%7E2"></span>integer(kind=idx_t),</td>
   <td>intent(in),</td>
   <td></td>
   
@@ -315,7 +315,7 @@ public function METIS_PartMeshNodal(ne, nn, eptr, eind, vwgt, vsize, nparts, tpw
   
 <tr>
   
-  <td><span class="anchor" id="variable-eind%7E2"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-eind%7E2"></span>integer(kind=idx_t),</td>
   <td>intent(in),</td>
   <td></td>
   
@@ -330,7 +330,7 @@ public function METIS_PartMeshNodal(ne, nn, eptr, eind, vwgt, vsize, nparts, tpw
   
 <tr>
   
-  <td><span class="anchor" id="variable-vwgt%7E5"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-vwgt%7E5"></span>integer(kind=idx_t),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -345,7 +345,7 @@ public function METIS_PartMeshNodal(ne, nn, eptr, eind, vwgt, vsize, nparts, tpw
   
 <tr>
   
-  <td><span class="anchor" id="variable-vsize%7E5"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-vsize%7E5"></span>integer(kind=idx_t),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -362,7 +362,7 @@ public function METIS_PartMeshNodal(ne, nn, eptr, eind, vwgt, vsize, nparts, tpw
   
 <tr>
   
-  <td><span class="anchor" id="variable-nparts%7E4"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-nparts%7E4"></span>integer(kind=idx_t),</td>
   <td>intent(in)</td>
   <td></td>
   
@@ -377,7 +377,7 @@ public function METIS_PartMeshNodal(ne, nn, eptr, eind, vwgt, vsize, nparts, tpw
   
 <tr>
   
-  <td><span class="anchor" id="variable-tpwgts%7E4"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-tpwgts%7E4"></span>integer(kind=idx_t),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -395,7 +395,7 @@ public function METIS_PartMeshNodal(ne, nn, eptr, eind, vwgt, vsize, nparts, tpw
   
 <tr>
   
-  <td><span class="anchor" id="variable-options%7E4"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-options%7E4"></span>integer(kind=idx_t),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -410,7 +410,7 @@ public function METIS_PartMeshNodal(ne, nn, eptr, eind, vwgt, vsize, nparts, tpw
   
 <tr>
   
-  <td><span class="anchor" id="variable-objval%7E4"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-objval%7E4"></span>integer(kind=idx_t),</td>
   <td>intent(out)</td>
   <td></td>
   
@@ -426,7 +426,7 @@ public function METIS_PartMeshNodal(ne, nn, eptr, eind, vwgt, vsize, nparts, tpw
   
 <tr>
   
-  <td><span class="anchor" id="variable-epart%7E2"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-epart%7E2"></span>integer(kind=idx_t),</td>
   <td>intent(out)</td>
   <td></td>
   
@@ -443,7 +443,7 @@ public function METIS_PartMeshNodal(ne, nn, eptr, eind, vwgt, vsize, nparts, tpw
   
 <tr>
   
-  <td><span class="anchor" id="variable-npart%7E2"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-npart%7E2"></span>integer(kind=idx_t),</td>
   <td>intent(out)</td>
   <td></td>
   
@@ -464,7 +464,7 @@ public function METIS_PartMeshNodal(ne, nn, eptr, eind, vwgt, vsize, nparts, tpw
     
     
     
-      <h3>Return Value <span class="anchor" id="variable-ierr%7E4"></span><small>integer(kind=c_int)
+      <h3>Return Value <span class="anchor" id="variable-ierr%7E4"></span><small>integer(kind=idx_t)
   </small></h3>
     <p><code>METIS_OK</code> - Indicates that the function returned normally.<br /> 
  <code>METIS_ERROR_INPUT</code> - Indicates an input error.<br /> 

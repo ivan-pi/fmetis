@@ -4,19 +4,17 @@
 !
 program test_PartGraphKway
 
-    use iso_c_binding, only: c_int
-    use metis_interface, only: METIS_PartGraphKway, METIS_SetDefaultOptions, METIS_NOPTIONS
-    use metis_enum, only: METIS_OPTION_NUMBERING, METIS_OK
+    use metis_interface, only: idx_t, METIS_PartGraphKway, METIS_SetDefaultOptions, &
+        METIS_NOPTIONS, METIS_OPTION_NUMBERING, METIS_OK
     implicit none
 
-    integer(c_int), parameter :: npart = 3  ! number of partitions
-    integer(c_int), parameter :: n = 8      ! number of nodes
-    integer(c_int), parameter :: m = 10     ! number of edges
+    integer(idx_t), parameter :: npart = 3  ! number of partitions
+    integer(idx_t), parameter :: n = 8      ! number of nodes
+    integer(idx_t), parameter :: m = 10     ! number of edges
 
-    integer(c_int) :: xadj(n+1), adjncy(2*m) ! graph adjacency structure
-    integer(c_int) :: perm(n), iperm(n) ! fill-reducing permutation and inverse permutation
-    integer(c_int) :: part(n)
-    integer(c_int) :: options(0:METIS_NOPTIONS-1), ios, objval
+    integer(idx_t) :: xadj(n+1), adjncy(2*m) ! graph adjacency structure
+    integer(idx_t) :: part(n)
+    integer(idx_t) :: options(0:METIS_NOPTIONS-1), ios, objval
 
     write(*,'(A)') "TEST METIS_PartGraphKway"
 

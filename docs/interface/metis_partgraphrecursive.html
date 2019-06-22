@@ -270,7 +270,7 @@ public function METIS_PartGraphRecursive(nvtxs, ncon, xadj, adjncy, vwgt, vsize,
   
 <tr>
   
-  <td><span class="anchor" id="variable-nvtxs"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-nvtxs"></span>integer(kind=idx_t),</td>
   <td>intent(in)</td>
   <td></td>
   
@@ -285,7 +285,7 @@ public function METIS_PartGraphRecursive(nvtxs, ncon, xadj, adjncy, vwgt, vsize,
   
 <tr>
   
-  <td><span class="anchor" id="variable-ncon%7E2"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-ncon%7E2"></span>integer(kind=idx_t),</td>
   <td>intent(in)</td>
   <td></td>
   
@@ -300,7 +300,7 @@ public function METIS_PartGraphRecursive(nvtxs, ncon, xadj, adjncy, vwgt, vsize,
   
 <tr>
   
-  <td><span class="anchor" id="variable-xadj%7E2"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-xadj%7E2"></span>integer(kind=idx_t),</td>
   <td>intent(in),</td>
   <td></td>
   
@@ -315,7 +315,7 @@ public function METIS_PartGraphRecursive(nvtxs, ncon, xadj, adjncy, vwgt, vsize,
   
 <tr>
   
-  <td><span class="anchor" id="variable-adjncy%7E2"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-adjncy%7E2"></span>integer(kind=idx_t),</td>
   <td>intent(in),</td>
   <td></td>
   
@@ -330,7 +330,7 @@ public function METIS_PartGraphRecursive(nvtxs, ncon, xadj, adjncy, vwgt, vsize,
   
 <tr>
   
-  <td><span class="anchor" id="variable-vwgt%7E2"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-vwgt%7E2"></span>integer(kind=idx_t),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -345,7 +345,7 @@ public function METIS_PartGraphRecursive(nvtxs, ncon, xadj, adjncy, vwgt, vsize,
   
 <tr>
   
-  <td><span class="anchor" id="variable-vsize%7E2"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-vsize%7E2"></span>integer(kind=idx_t),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -360,7 +360,7 @@ public function METIS_PartGraphRecursive(nvtxs, ncon, xadj, adjncy, vwgt, vsize,
   
 <tr>
   
-  <td><span class="anchor" id="variable-adjwgt%7E2"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-adjwgt%7E2"></span>integer(kind=idx_t),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -375,7 +375,7 @@ public function METIS_PartGraphRecursive(nvtxs, ncon, xadj, adjncy, vwgt, vsize,
   
 <tr>
   
-  <td><span class="anchor" id="variable-nparts"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-nparts"></span>integer(kind=idx_t),</td>
   <td>intent(in)</td>
   <td></td>
   
@@ -390,7 +390,7 @@ public function METIS_PartGraphRecursive(nvtxs, ncon, xadj, adjncy, vwgt, vsize,
   
 <tr>
   
-  <td><span class="anchor" id="variable-tpwgts"></span>real(kind=c_double),</td>
+  <td><span class="anchor" id="variable-tpwgts"></span>real(kind=real_t),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -406,7 +406,7 @@ public function METIS_PartGraphRecursive(nvtxs, ncon, xadj, adjncy, vwgt, vsize,
   
 <tr>
   
-  <td><span class="anchor" id="variable-ubvec"></span>real(kind=c_double),</td>
+  <td><span class="anchor" id="variable-ubvec"></span>real(kind=real_t),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -424,7 +424,7 @@ public function METIS_PartGraphRecursive(nvtxs, ncon, xadj, adjncy, vwgt, vsize,
   
 <tr>
   
-  <td><span class="anchor" id="variable-options"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-options"></span>integer(kind=idx_t),</td>
   <td>intent(in),</td>
   <td>optional</td>
   
@@ -439,7 +439,7 @@ public function METIS_PartGraphRecursive(nvtxs, ncon, xadj, adjncy, vwgt, vsize,
   
 <tr>
   
-  <td><span class="anchor" id="variable-objval"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-objval"></span>integer(kind=idx_t),</td>
   <td>intent(out)</td>
   <td></td>
   
@@ -455,7 +455,7 @@ public function METIS_PartGraphRecursive(nvtxs, ncon, xadj, adjncy, vwgt, vsize,
   
 <tr>
   
-  <td><span class="anchor" id="variable-part"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-part"></span>integer(kind=idx_t),</td>
   <td>intent(out)</td>
   <td></td>
   
@@ -475,7 +475,7 @@ public function METIS_PartGraphRecursive(nvtxs, ncon, xadj, adjncy, vwgt, vsize,
     
     
     
-      <h3>Return Value <span class="anchor" id="variable-ierr"></span><small>integer(kind=c_int)
+      <h3>Return Value <span class="anchor" id="variable-ierr"></span><small>integer(kind=idx_t)
   </small></h3>
     <p><code>METIS_OK</code> - Indicates that the function returned normally.<br /> 
  <code>METIS_ERROR_INPUT</code> - Indicates an input error.<br /> 

@@ -609,8 +609,8 @@ module metis_interface
 !
 !@note
 ! The passed array `options` must have the size `METIS_NOPTIONS` (40).
-! To be able to use the parameters in the [[metis_enum]] module it is recommended to use
-! zero-based indexing for the options array: 
+! To be able to use the option parameters specified in the [[metis_interface]] module 
+! it is recommended to use zero-based indexing for the options array: 
 !```Fortran
 !integer(kind=idx_t) :: opts(0:39)
 !```
@@ -627,7 +627,7 @@ module metis_interface
 !opts(METIS_OPTION_NUMBERING) = 1 ! Fortran-style index numbering
 !```
 !
-! Other options can be also changed using parameters from the [[metis_enum]] module.
+! Other options can also be changed using parameters specified in the [[metis_interface]] module.
 !```Fortran
 !use metis_enum, only : METIS_OPTION_DBGLVL, METIS_DBG_INFO
 !use metis_interface, only : idx_t, METIS_SetDefaultOptions

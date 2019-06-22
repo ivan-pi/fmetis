@@ -270,7 +270,7 @@ public function METIS_SetDefaultOptions(options) result(ierr) bind(C,name="METIS
   
 <tr>
   
-  <td><span class="anchor" id="variable-options%7E6"></span>integer(kind=c_int),</td>
+  <td><span class="anchor" id="variable-options%7E6"></span>integer(kind=idx_t),</td>
   <td>intent(out)</td>
   <td></td>
   
@@ -289,7 +289,7 @@ public function METIS_SetDefaultOptions(options) result(ierr) bind(C,name="METIS
     
     
     
-      <h3>Return Value <span class="anchor" id="variable-ierr%7E8"></span><small>integer(kind=c_int)
+      <h3>Return Value <span class="anchor" id="variable-ierr%7E8"></span><small>integer(kind=idx_t)
   </small></h3>
     <p><code>METIS_OK</code> - Indicates that the function returned normally.</p>
     
@@ -297,9 +297,9 @@ public function METIS_SetDefaultOptions(options) result(ierr) bind(C,name="METIS
     <h3>Description</h3>
     <p>Initializes the options array into its default values.</p>
 <p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p>The passed array <code>options</code> must have the size <code>METIS_NOPTIONS</code> (40).
- To be able to use the parameters in the <a href="../module/metis_enum.html">metis_enum</a> module it is recommended to use
- zero-based indexing for the options array: </p>
-<div class="codehilite"><pre><span></span><span class="kt">integer</span><span class="p">(</span><span class="kt">c_int</span><span class="p">)</span> <span class="kd">::</span> <span class="n">opts</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">39</span><span class="p">)</span>
+ To be able to use the option parameters specified in the <a href="../module/metis_interface.html">metis_interface</a> module 
+ it is recommended to use zero-based indexing for the options array: </p>
+<div class="codehilite"><pre><span></span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">idx_t</span><span class="p">)</span> <span class="kd">::</span> <span class="n">opts</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">39</span><span class="p">)</span>
 </pre></div>
 
 
@@ -307,17 +307,19 @@ public function METIS_SetDefaultOptions(options) result(ierr) bind(C,name="METIS
 <p>
 <h1>Examples</h1>
 <p>To set Fortran style index-numbering use:</p>
-<div class="codehilite"><pre><span></span><span class="kt">integer</span> <span class="kd">::</span> <span class="n">opts</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">39</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="k">use </span><span class="n">metis_enum</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="n">METIS_OPTION_NUMBERING</span>
+<span class="k">use </span><span class="n">metis_interface</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="n">idx_t</span><span class="p">,</span> <span class="n">METIS_SetDefaultOptions</span>
+<span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">idx_t</span><span class="p">)</span> <span class="kd">::</span> <span class="n">opts</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">39</span><span class="p">)</span>
 
 <span class="k">call </span><span class="n">METIS_SetDefaultOptions</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span>
-<span class="n">opts</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="c">! Fortran-style index numbering</span>
+<span class="n">opts</span><span class="p">(</span><span class="n">METIS_OPTION_NUMBERING</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="c">! Fortran-style index numbering</span>
 </pre></div>
 
 
-<p>Other options can be changed using parameters from the <a href="../module/metis_enum.html">metis_enum</a> module.</p>
-<div class="codehilite"><pre><span></span><span class="k">use </span><span class="n">metis_interface</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">METIS_SetDefaultOptions</span>
-<span class="k">use </span><span class="n">metis_enum</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">METIS_OPTION_DBGLVL</span><span class="p">,</span> <span class="n">METIS_DBG_INFO</span>
-<span class="kt">integer</span> <span class="kd">::</span> <span class="n">opts</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">39</span><span class="p">)</span>
+<p>Other options can also be changed using parameters specified in the <a href="../module/metis_interface.html">metis_interface</a> module.</p>
+<div class="codehilite"><pre><span></span><span class="k">use </span><span class="n">metis_enum</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">METIS_OPTION_DBGLVL</span><span class="p">,</span> <span class="n">METIS_DBG_INFO</span>
+<span class="k">use </span><span class="n">metis_interface</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">idx_t</span><span class="p">,</span> <span class="n">METIS_SetDefaultOptions</span>
+<span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">idx_t</span><span class="p">)</span> <span class="kd">::</span> <span class="n">opts</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">39</span><span class="p">)</span>
 
 <span class="k">call </span><span class="n">METIS_SetDefaultOptions</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span>
 <span class="n">opts</span><span class="p">(</span><span class="n">METIS_OPTION_DBGLVL</span><span class="p">)</span> <span class="o">=</span> <span class="n">METIS_DBG_INFO</span> <span class="c">! Show various diagnostic messages</span>
