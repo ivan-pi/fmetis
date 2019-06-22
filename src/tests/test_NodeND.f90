@@ -4,18 +4,17 @@
 !
 program test_NodeND
 
-    use iso_c_binding, only: c_int
-    use metis_interface, only: METIS_SetDefaultOptions, METIS_NodeND, METIS_NOPTIONS
-    use metis_enum, only: METIS_OK, METIS_OPTION_NUMBERING
+    use metis_interface, only: idx_t, METIS_SetDefaultOptions, METIS_NodeND, &
+        METIS_NOPTIONS, METIS_OK, METIS_OPTION_NUMBERING
     implicit none
 
-    integer(c_int), parameter :: n = 15 ! number of vertices
-    integer(c_int), parameter :: m = 22 ! number of edges
+    integer(idx_t), parameter :: n = 15 ! number of vertices
+    integer(idx_t), parameter :: m = 22 ! number of edges
 
-    integer(c_int) :: xadj(n+1), adjncy(2*m) ! graph adjacency structure
-    integer(c_int) :: perm(n), iperm(n) ! fill-reducing permutation and inverse permutation
+    integer(idx_t) :: xadj(n+1), adjncy(2*m) ! graph adjacency structure
+    integer(idx_t) :: perm(n), iperm(n) ! fill-reducing permutation and inverse permutation
 
-    integer(c_int) :: options(0:METIS_NOPTIONS-1), ios
+    integer(idx_t) :: options(0:METIS_NOPTIONS-1), ios
 
     write(*,'(A)') "TEST METIS_NodeND"
 

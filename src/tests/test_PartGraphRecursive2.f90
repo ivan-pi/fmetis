@@ -2,13 +2,12 @@
 !
 program test_PartGraphRecursive2
 
-    use iso_c_binding, only: c_int
-    use metis_interface, only: METIS_PartGraphRecursive, METIS_SetDefaultOptions, METIS_NOPTIONS
-    use metis_enum, only: METIS_OPTION_NUMBERING, METIS_OK
+    use metis_interface, only: idx_t, METIS_PartGraphRecursive, METIS_SetDefaultOptions, &
+        METIS_NOPTIONS, METIS_OPTION_NUMBERING, METIS_OK
 
-    integer(c_int) :: n, m
-    integer(c_int), allocatable :: xadj(:), adjncy(:), part(:)
-    integer(c_int) :: options(0:METIS_NOPTIONS-1), ios, ncon, objval
+    integer(idx_t) :: n, m
+    integer(idx_t), allocatable :: xadj(:), adjncy(:), part(:)
+    integer(idx_t) :: options(0:METIS_NOPTIONS-1), ios, ncon, objval
 
     write(*,'(A)') "TEST METIS_PartGraphRecursive 2"
 

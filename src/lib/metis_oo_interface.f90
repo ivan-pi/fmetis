@@ -7,7 +7,6 @@
 
 module metis_oo_interface
     
-    use metis_enum
     use metis_interface
 
     implicit none
