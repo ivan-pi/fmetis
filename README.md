@@ -1,5 +1,8 @@
 # Fortran METIS Interface
 
+[![Build Status](https://travis-ci.com/ivan-pi/fmetis.svg?branch=master)](https://travis-ci.com/ivan-pi/fmetis)
+[![Issues open](https://img.shields.io/github/issues/ivan-pi/fmetis.svg)](https://github.com/ivan-pi/fmetis/issues)
+
 A modern Fortran interface to the [METIS software package](http://glaros.dtc.umn.edu/gkhome/metis/metis/overview) for partitioning unstructured graphs, partitioning meshes, and computing fill-reducing orderings of sparse matrices.
 
 * [Getting started](#getting-started)
