@@ -13,19 +13,25 @@ matrix:
             - libmetis-dev
             - metis
             - cmake
-            - gfortran-9
+            - gfortran-8
 
       script:
         - mkdir build && pushd build
-        - FC=gfortran-9 cmake -DCMAKE_INSTALL_PREFIX=~/.local/ ..
+        - FC=gfortran-8 cmake -DCMAKE_INSTALL_PREFIX=~/.local/ ..
         - make install && ctest --output-on-failure
 
     - os: osx
-      install:
-        - brew update
-        - brew install metis
+      addons:
+        homebrew:
+          update: true
+          packages:
+            - gcc
+            - cmake
+            - metis
+      before_install:
+        - brew link gcc
 
       script:
         - mkdir build && pushd build
-        - FC=gfortran-9 cmake -DCMAKE_INSTALL_PREFIX=~/.local ..
+        - FC=gfortran cmake -DCMAKE_INSTALL_PREFIX=~/.local ..
         - make install && ctest --output-on-failure
