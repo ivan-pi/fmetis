@@ -5,18 +5,17 @@
 !
 program test_PartMeshNodal2
 
-    use iso_c_binding, only: c_int
-    use metis_interface, only: METIS_SetDefaultOptions, METIS_PartMeshNodal, METIS_NOPTIONS
-    use metis_enum, only: METIS_OPTION_NUMBERING, METIS_OPTION_CONTIG, METIS_OK
+    use metis_interface, only: idx_t, METIS_SetDefaultOptions, METIS_PartMeshNodal, METIS_NOPTIONS, &
+        METIS_OPTION_NUMBERING, METIS_OPTION_CONTIG, METIS_OK
     implicit none
 
-    integer(c_int), parameter :: ne = 4    ! number of elements
-    integer(c_int), parameter :: nn = 9    ! number of nodes
+    integer(idx_t), parameter :: ne = 4    ! number of elements
+    integer(idx_t), parameter :: nn = 9    ! number of nodes
 
-    integer(c_int) :: eptr(ne+1), eind(4*ne)   ! arrays storing mesh structure
-    integer(c_int) :: epart(ne), npart(nn)     ! element and node partition vectors
+    integer(idx_t) :: eptr(ne+1), eind(4*ne)   ! arrays storing mesh structure
+    integer(idx_t) :: epart(ne), npart(nn)     ! element and node partition vectors
 
-    integer(c_int) :: opts(0:METIS_NOPTIONS-1), ios, objval
+    integer(idx_t) :: opts(0:METIS_NOPTIONS-1), ios, objval
 
     write(*,'(A)') "TEST METIS_PartMeshNodal2"
 

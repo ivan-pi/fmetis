@@ -5,9 +5,8 @@ A modern Fortran interface to the [METIS software package](http://glaros.dtc.umn
 * [Getting started](#getting-started)
 * [Why Fortran METIS Interface?](#why-fortran-metis-interface)
 * [METIS API](#metis-api)
-* [Object-oriented API](#object-oriented-api)
 * [Example usage](#example-usage)
-* [Documentation](#dcoumentation)
+* [Documentation](#documentation)
 * [Contributing](#contributing)
 * [License](#license)
 
@@ -19,7 +18,6 @@ apt-get install libmetis-dev libmetis5 metis
 ```
 
 Next, download and build the Fortran interface:
-
 ```
 git clone https://github.com/ivan-pi/fmetis
 cd fmetis
@@ -30,16 +28,14 @@ make
 ctest
 ```
 
-Use METIS in your code by including the modules:
-
+Use METIS in your code by including the following line:
 ```Fortran
-use metis_enum
 use metis_interface
 ```
 
 ## Why Fortran METIS Interface?
 
-Fortran is still one of the main programming languages used for scientific computing. In many finite element, finite volume, and other scientific codes, the fill-reducing orderings computed by METIS can help reduce the computational requirements of sparse matrix factorization. Moreover, the graph partitions produced by METIS can be used to divide meshes for parallel processing. 
+Fortran is still one of the main programming languages used for scientific computing. In many finite element, finite volume, and other scientific codes, the fill-reducing orderings computed by METIS can help reduce the computational requirements of sparse matrix factorization by an order of magnitude. Moreover, the graph partitions produced by METIS can be used to divide meshes for parallel processing. 
 
 While METIS was already designed with support for calls from Fortran, the C interoperability features available in modern Fortran (`>= 2003`) allow the METIS routines to be called in a simple and safe way with guaranteed type checking and avoiding issues with compiler name mangling.
 
@@ -70,10 +66,6 @@ ierr = METIS_Free(ptr)
 
 All functions return an integer status flag `ierr` that can be checked for success.
 
-## Object-oriented API
-
-The object-oriented API is still under development.
-
 ## Example usage
 
 Examples of METIS usage from Fortran will be provided soon.
@@ -89,13 +81,12 @@ The original METIS documentation can be downloaded [here (PDF)](http://glaros.dt
 
 ## Contributing
 
-Please submit a bug report or suggest a modification by opening a [new issue](https://github.com/ivan-pi/fmetis/issues/new).
+Please submit a bug report or suggest a modification by opening a [new issue](https://github.com/ivan-pi/fmetis/issues/new). Pull requests are also welcome and can be submitted [here](https://github.com/ivan-pi/fmetis/compare).
 
 ## License
 
-The Fortran METIS Interface source code, related files and documentation are distributed under the permissive MIT software license.  See the [LICENSE](https://raw.githubusercontent.com/ivan-pi/fmetis/master/LICENSE) file for more details. Note that to succesfully use the Fortran METIS interface, the source code of this project must be [compiled and linked](#compiling-and-linking) with the original METIS source files that are distributed under the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0). 
+The Fortran METIS Interface source code is being distributed under the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).  See the [LICENSE](https://raw.githubusercontent.com/ivan-pi/fmetis/master/LICENSE) file for further details. To succesfully use the Fortran METIS interface, the Fortran source code must be [compiled and linked] with the original METIS library that is distributed under the same Apache license (as of METIS version 5.0.3). 
 
-## To-Do List
-- [ ] Provide usage examples for partitioning graphs, partitioning meshes and computing sparse matrix reorderings
-- [ ] Provide examples for reading and writing METIS graph and mesh files
-- [ ] Move documentation to a separate branch
+---
+
+[Back to top](#fortran-metis-interface)

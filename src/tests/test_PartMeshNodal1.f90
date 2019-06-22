@@ -3,24 +3,23 @@
 
 program test_PartMeshNodal1
 
-    use, intrinsic :: iso_c_binding, only : c_int, c_ptr, c_f_pointer
-    use metis_interface, only: METIS_SetDefaultOptions, METIS_PartMeshNodal, &
-        METIS_MeshToNodal, METIS_Free, METIS_NOPTIONS
-    use metis_enum, only: METIS_OK, METIS_OPTION_NUMBERING
+    use, intrinsic :: iso_c_binding, only: c_ptr, c_f_pointer
+    use metis_interface, only: idx_t, METIS_SetDefaultOptions, METIS_PartMeshNodal, &
+        METIS_MeshToNodal, METIS_Free, METIS_NOPTIONS, METIS_OK, METIS_OPTION_NUMBERING
     implicit none
 
-    integer(c_int), parameter :: ne = 3 ! number of elements
-    integer(c_int), parameter :: nn = 8 ! number of nodes
-    integer(c_int), parameter :: npel = 4 ! nodes per element
+    integer(idx_t), parameter :: ne = 3 ! number of elements
+    integer(idx_t), parameter :: nn = 8 ! number of nodes
+    integer(idx_t), parameter :: npel = 4 ! nodes per element
 
-    integer(c_int) :: eptr(ne+1)
-    integer(c_int) :: eind(ne*npel)
-    integer(c_int) :: epart(ne), npart(nn)
-    integer(c_int) :: options(0:METIS_NOPTIONS-1)
-    integer(c_int) :: ios, objval
+    integer(idx_t) :: eptr(ne+1)
+    integer(idx_t) :: eind(ne*npel)
+    integer(idx_t) :: epart(ne), npart(nn)
+    integer(idx_t) :: options(0:METIS_NOPTIONS-1)
+    integer(idx_t) :: ios, objval
 
     type(c_ptr) :: c_xadj, c_adjncy
-    integer(c_int), pointer :: xadj(:) => null(), adjncy(:) => null()
+    integer(idx_t), pointer :: xadj(:) => null(), adjncy(:) => null()
 
     write(*,'(A)') "TEST METIS_PartMeshNodal 1"
 

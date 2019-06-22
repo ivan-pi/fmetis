@@ -3,17 +3,15 @@
 
 program test_PartGraphRecursive1
 
-    use iso_c_binding, only: c_int
-    use metis_interface, only: METIS_PartGraphRecursive
-    use metis_enum, only: METIS_OK
+    use metis_interface, only: idx_t, METIS_PartGraphRecursive, METIS_OK
     implicit none
     
-    integer(c_int), parameter :: nvtxs = 15     ! number of vertices
-    integer(c_int), parameter :: nedgs = 22     ! number of edges
+    integer(idx_t), parameter :: nvtxs = 15     ! number of vertices
+    integer(idx_t), parameter :: nedgs = 22     ! number of edges
 
-    integer(c_int) :: xadj(nvtxs+1),adjncy(2*nedgs) ! adjacency arrays
-    integer(c_int) :: part(nvtxs)                   ! partiotion vector
-    integer(c_int) :: objval, ios
+    integer(idx_t) :: xadj(nvtxs+1),adjncy(2*nedgs) ! adjacency arrays
+    integer(idx_t) :: part(nvtxs)                   ! partiotion vector
+    integer(idx_t) :: objval, ios
 
     write(*,'(A)') "TEST METIS_PartGraphRecursive 1"
 
