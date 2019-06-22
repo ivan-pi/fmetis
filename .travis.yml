@@ -2,28 +2,28 @@ language: c
 sudo: false
 
 matrix:
-  include:
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - libmetis5
-            - cmake
-            - gfortran-9
+	include:
+		- os: linux
+			addons:
+				apt:
+					sources:
+						- ubuntu-toolchain-r-test
+					packages:
+						- libmetis5
+						- cmake
+						- gfortran-9
 
-      script:
-        - mkdir build && pushd build
-        - FC=gfortran-9 cmake -DCMAKE_INSTALL_PREFIX=~/.local/ ..
-        - make install && ctest --output-on-failure
+			script:
+				- mkdir build && pushd build
+				- FC=gfortran-9 cmake -DCMAKE_INSTALL_PREFIX=~/.local/ ..
+				- make install && ctest --output-on-failure
 
-  - os: osx
-    install:
-      - brew update
-      - brew install metis
+	- os: osx
+		install:
+			- brew update
+			- brew install metis
 
-    script:
-      - mkdir build && pushd build
-      - cmake -DCMAKE_INSTALL_PREFIX=~/.local ..
-      - make install && ctest --output-on-failure
+		script:
+			- mkdir build && pushd build
+			- cmake -DCMAKE_INSTALL_PREFIX=~/.local ..
+			- make install && ctest --output-on-failure
