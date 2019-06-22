@@ -53,17 +53,18 @@ endif ()
 message("Installation prefix: ${CMAKE_INSTALL_PREFIX}")
 
 
-# Set the METIS include and lib path (assuming standard install path)
-# Edit the following two lines for a local METIS folder 
-set(METIS_INCLUDE /usr/local/include)
-set(METIS_LIB /usr/local/lib)
+# Set the METIS lib path
+# Edit the following line to specify the location manually
+#set(METIS_LIB /usr/local/lib)
 
-include_directories(${METIS_INCLUDE})
-link_directories (${METIS_LIB})
+if (NOT METIS_LIB)
+    find_library(METIS_LIB metis)
+endif ()
+message("METIS library location: ${METIS_LIB}")
 
 # Library to archive (libfmetis.a)
 add_library(fmetis src/lib/metis_interface.f90 src/lib/metis_enum.f90 src/lib/metis_oo_interface.f90)
-target_link_libraries(fmetis metis)
+target_link_libraries(fmetis ${METIS_LIB})
 
 # Tests
 enable_testing()
