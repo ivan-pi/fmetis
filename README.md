@@ -9,6 +9,7 @@ A modern Fortran interface to the [METIS software package](http://glaros.dtc.umn
     - [Specifying the METIS library location](#specifying-the-metis-library-location)
     - [Using a different compiler](#using-a-different-compiler)
     - [Specifying the integer and real type precision](#specifying-the-integer-and-real-type-precision)
+    - [Choosing a custom install location](#choosing-a-custom-install-location)
 * [Why Fortran METIS Interface?](#why-fortran-metis-interface)
 * [METIS API](#metis-api)
 * [Example usage](#example-usage)
@@ -37,28 +38,29 @@ git clone https://github.com/ivan-pi/fmetis
 To build and test the Fortran METIS interface, type:
 ```
 cd fmetis
-mkdir -p build
+mkdir build
 cd build
 cmake ..
 make
-ctest --output-on-failure
+ctest
 ```
 
 Start using METIS in your code by including the following line in your program:
 ```Fortran
 use metis_interface
 ```
+and link your application with the module files and `fmetis` library in the `include/` and `lib/` folders (either in the local build folder or the installed location), e.g.: `gfortran -o myapp -I path/to/include/ -L path/to/lib/ myapp.f90 -lfmetis -lmetis`
 
 Dependencies include:
-* Fortran 2018-compatible compiler,
+* a Fortran 2018-compatible compiler,
 * a working METIS library installation, and
-* the CMake build system.
+* the CMake build system (v2.8 or higher).
 
 ### Specifying the METIS library location
 
 For non-standard METIS install locations you can manually specify the right library location (either static or shared) like this:
 ```
-cmake .. -DMETIS_LIB="non-standard/path/to/libmetis.a" # or libmetis.so
+cmake .. -DMETIS_LIB="custom/path/to/libmetis.a" # or libmetis.so
 ```
 
 ### Using a different compiler
@@ -88,6 +90,14 @@ i.e., 2^31-1. Just like in the original METIS library, the `c_int32_t` and `c_in
 For double precision real variables, type:
 ```
 cmake .. -DREAL=64
+```
+
+### Choosing a custom install location
+
+To install the Fortran METIS interface in a non-default location (e.g. `~/.local/`, type:
+```
+cmake .. -DCMAKE_INSTALL_PREFIX="~/.local/"
+make install
 ```
 
 ## Why Fortran METIS Interface?
