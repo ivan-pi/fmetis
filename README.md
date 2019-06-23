@@ -49,7 +49,7 @@ Start using METIS in your code by including the following line in your program:
 ```Fortran
 use metis_interface
 ```
-and link your application with the module files and `fmetis` library in the `include/` and `lib/` folders (either in the local build folder or the installed location), e.g.: `gfortran -o myapp -I path/to/include/ -L path/to/lib/ myapp.f90 -lfmetis -lmetis`
+To link your application with the module files and `fmetis` library in the `include/` and `lib/` folders (either in the local build folder or the installed location) use: `gfortran -o myapp -I path/to/include/ -L path/to/lib/ myapp.f90 -lfmetis -lmetis` 
 
 Dependencies include:
 * a Fortran 2018-compatible compiler,
