@@ -34,9 +34,8 @@ Download the Fortran code:
 git clone https://github.com/ivan-pi/fmetis
 ```
 
-Dependencies include a Fortran 2018-compatible compiler, a working METIS library installation, and the CMake build system.
-
-Build and test the Fortran METIS interface:
+To build and test the Fortran METIS interface, type:
+```
 cd fmetis
 mkdir -p build
 cd build
@@ -49,6 +48,11 @@ Start using METIS in your code by including the following line in your program:
 ```Fortran
 use metis_interface
 ```
+
+Dependencies include:
+* Fortran 2018-compatible compiler,
+* a working METIS library installation, and
+* the CMake build system.
 
 ### Specifying the METIS library location
 
