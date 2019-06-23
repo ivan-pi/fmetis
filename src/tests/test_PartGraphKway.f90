@@ -45,7 +45,7 @@ program test_PartGraphKway
     end if
     options(METIS_OPTION_NUMBERING) = 1 ! Fortran-style numbering
 
-    ios = METIS_PartGraphKway(n,ncon=1,xadj=xadj,adjncy=adjncy,nparts=npart,options=options,objval=objval,part=part)
+    ios = METIS_PartGraphKway(n,ncon=1_idx_t,xadj=xadj,adjncy=adjncy,nparts=npart,options=options,objval=objval,part=part)
     if (ios /= METIS_OK) then
         write(*,*) "METIS_PartGraphKway failed with error: ", ios
         error stop 1

@@ -37,7 +37,7 @@ program test_PartMeshNodal1
     end if
     options(METIS_OPTION_NUMBERING) = 0 ! C-style numbering
 
-    ios = METIS_PartMeshNodal(ne,nn,eptr,eind,nparts=2,options=options,&
+    ios = METIS_PartMeshNodal(ne,nn,eptr,eind,nparts=2_idx_t,options=options,&
         objval=objval,epart=epart,npart=npart)
     if (ios /= METIS_OK) then
         write(*,*) "METIS_PartMeshNodal failed with error: ", ios
@@ -48,7 +48,7 @@ program test_PartMeshNodal1
     write(*,'(A,*(I1,:,1X))') "epart = ", epart
     write(*,'(A,*(I1,:,1X))') "npart = ", npart
 
-    ios = METIS_MeshToNodal(ne,nn,eptr,eind,numflag=0,xadj=c_xadj,adjncy=c_adjncy)
+    ios = METIS_MeshToNodal(ne,nn,eptr,eind,numflag=0_idx_t,xadj=c_xadj,adjncy=c_adjncy)
     if (ios /= METIS_OK) then
         write(*,*) "METIS_MeshToNodal failed with error: ", ios
         error stop 1

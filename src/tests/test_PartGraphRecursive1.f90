@@ -10,8 +10,8 @@ program test_PartGraphRecursive1
     integer(idx_t), parameter :: nedgs = 22     ! number of edges
 
     integer(idx_t) :: xadj(nvtxs+1),adjncy(2*nedgs) ! adjacency arrays
-    integer(idx_t) :: part(nvtxs)                   ! partiotion vector
-    integer(idx_t) :: objval, ios
+    integer(idx_t) :: part(nvtxs)                   ! partition vector
+    integer(idx_t) :: objval, ios, ncon, nparts
 
     write(*,'(A)') "TEST METIS_PartGraphRecursive 1"
 
@@ -26,7 +26,9 @@ program test_PartGraphRecursive1
     xadj = [0,2,5,8,11,13,16,20,24,28,31,33,36,39,42,44]
     adjncy = [1,5,0,2,6,1,3,7,2,4,8,3,9,0,6,10,1,5,7,11,2,6,8,12,3,7,9,13,4,8,14,5,11,6,10,12,7,11,13,8,12,14,9,13]
 
-    ios = METIS_PartGraphRecursive(nvtxs,ncon=1,xadj=xadj,adjncy=adjncy,nparts=2,objval=objval,part=part)
+    ncon = 1
+    nparts = 2
+    ios = METIS_PartGraphRecursive(nvtxs,ncon,xadj=xadj,adjncy=adjncy,nparts=nparts,objval=objval,part=part)
     if (ios /= METIS_OK) then
         write(*,*) "METIS_PartGraphRecursive failed with error: ", ios
         error stop 1

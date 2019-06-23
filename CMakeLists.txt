@@ -19,9 +19,28 @@ if (NOT (CMAKE_BUILD_TYPE STREQUAL "Debug" OR
     message(FATAL_ERROR "CMAKE_BUILD_TYPE must be one of: Debug, Release (current value: '${CMAKE_BUILD_TYPE}')")
 endif ()
 
+# Handle integer size
+if (INT)
+    message("Configuring build for ${INT}-bit integers")
+    add_definitions(-DINT${INT})
+else()
+    message("Configuring build for 32-bit integers")
+    add_definitions(-DINT32)
+endif()
+
+# Handle real size
+if (REAL)
+    message("Configuring build for ${INT}-bit reals")
+    add_definitions(-DREAL${REAL})
+else()
+    message("Configuring build for 32-bit reals")
+    add_definitions(-DREAL32)
+endif()
+
+
 # Compiler flags for gfortran.
 if (CMAKE_Fortran_COMPILER_ID MATCHES GNU)
-    set(common "-Wall")
+    set(common "-Wall -cpp")
     set(CMAKE_Fortran_FLAGS_RELEASE "${common} -O3 -march=native")
     set(CMAKE_Fortran_FLAGS_DEBUG   "${common} -O0 -g -C -fbacktrace")
 endif()

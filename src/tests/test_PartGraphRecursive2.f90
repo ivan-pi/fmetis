@@ -7,14 +7,14 @@ program test_PartGraphRecursive2
 
     integer(idx_t) :: n, m
     integer(idx_t), allocatable :: xadj(:), adjncy(:), part(:)
-    integer(idx_t) :: options(0:METIS_NOPTIONS-1), ios, ncon, objval
+    integer(idx_t) :: options(0:METIS_NOPTIONS-1), ios, ncon, objval, nparts
 
     write(*,'(A)') "TEST METIS_PartGraphRecursive 2"
 
     !   1---5
-    !   |\ / \ 
+    !   |\ / \
     !   | 3   6      
-    !   |/ \ / \    
+    !   |/ \ / \
     !   2---4---7 
 
     xadj = [1,4,7,11,15,18,21,23]
@@ -33,9 +33,10 @@ program test_PartGraphRecursive2
     options(METIS_OPTION_NUMBERING) = 1     ! Fortran-style numbering
 
     ncon = 1
+    nparts = 2
     allocate(part(n))
     ios = METIS_PartGraphRecursive(n,ncon,xadj,adjncy,&
-                nparts=2,objval=objval,part=part,options=options)
+                nparts=nparts,objval=objval,part=part,options=options)
     if (ios /= METIS_OK) then
         write(*,*) "METIS_PartGraphKway failed with error: ", ios
         error stop 1

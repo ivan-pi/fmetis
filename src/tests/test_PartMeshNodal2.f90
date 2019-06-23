@@ -15,7 +15,7 @@ program test_PartMeshNodal2
     integer(idx_t) :: eptr(ne+1), eind(4*ne)   ! arrays storing mesh structure
     integer(idx_t) :: epart(ne), npart(nn)     ! element and node partition vectors
 
-    integer(idx_t) :: opts(0:METIS_NOPTIONS-1), ios, objval
+    integer(idx_t) :: opts(0:METIS_NOPTIONS-1), ios, objval, nparts
 
     write(*,'(A)') "TEST METIS_PartMeshNodal2"
 
@@ -40,7 +40,8 @@ program test_PartMeshNodal2
     opts(METIS_OPTION_CONTIG) = 1       ! Force contigous partitions
     ! call print_metis_options(opts)
     
-    ios = METIS_PartMeshNodal(ne,nn,eptr,eind,nparts=2,options=opts, &
+    nparts = 2
+    ios = METIS_PartMeshNodal(ne,nn,eptr,eind,nparts=nparts,options=opts, &
             objval=objval,epart=epart,npart=npart)
     if (ios /= METIS_OK) then
         write(*,*) "METIS_PartMeshNodal failed with error: ", ios

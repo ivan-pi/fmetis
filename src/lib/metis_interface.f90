@@ -30,10 +30,19 @@ module metis_interface
     private
 
     !
-    ! Width of elementary data types (should match those of metis.h)
+    ! Width of elementary data types (should match those used in metis.h)
     !
+#ifdef INT64
+    integer, parameter, public :: idx_t = c_int64_t ! <--- modify integer size here (c_int32_t or c_int64_t)
+#else
     integer, parameter, public :: idx_t = c_int32_t ! <--- modify integer size here (c_int32_t or c_int64_t)
-    integer, parameter, public :: real_t = c_float  ! <--- modify real size here (c_float or c_double)
+#endif
+
+#ifdef REAL64
+    integer, parameter, public :: real_t = c_double  ! <--- modify real size here (c_float or c_double)
+#else
+    integer, parameter, public :: real_t = c_float
+#endif
 
     !
     ! Number of METIS options

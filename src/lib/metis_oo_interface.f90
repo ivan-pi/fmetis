@@ -24,16 +24,16 @@ module metis_oo_interface
     public :: export_graph
 
     type :: graph_type
-        integer :: nvxts !! Number of vertices.
-        integer :: nedgs !! Number of edges.
-        integer, pointer :: xadj(:) => null()
-        integer, pointer :: adjncy(:) => null()
-        integer :: numflag = 1 !! Numbering style.
+        integer(kind=idx_t) :: nvxts !! Number of vertices.
+        integer(kind=idx_t) :: nedgs !! Number of edges.
+        integer(kind=idx_t), pointer :: xadj(:) => null()
+        integer(kind=idx_t), pointer :: adjncy(:) => null()
+        integer(kind=idx_t) :: numflag = 1 !! Numbering style.
         
-        integer :: ncon
-        integer, pointer :: vwgt(:) => null()
-        integer, pointer :: adjwgt(:) => null()
-        integer, pointer :: vsize(:) => null()
+        integer(kind=idx_t) :: ncon
+        integer(kind=idx_t), pointer :: vwgt(:) => null()
+        integer(kind=idx_t), pointer :: adjwgt(:) => null()
+        integer(kind=idx_t), pointer :: vsize(:) => null()
     end type
 
 contains
@@ -41,7 +41,7 @@ contains
     subroutine import_graph(fname,graph,numflag)
         character(len=*), intent(in) :: fname
         class(graph_type), intent(out) :: graph
-        integer, intent(in), optional :: numflag
+        integer(idx_t), intent(in), optional :: numflag
 
         integer :: unit,ios
 
@@ -74,14 +74,14 @@ contains
 
     subroutine write_graph(unit,xadj,adjncy,numflag,vwgt,adjwgt,vsize)
         integer, intent(in) :: unit
-        integer, intent(in) :: xadj(:)
-        integer, intent(in) :: adjncy(:)
-        integer, intent(in), optional :: numflag
-        integer, intent(in), optional :: vwgt(:)
-        integer, intent(in), optional :: adjwgt(:)
-        integer, intent(in), optional :: vsize(:)
+        integer(kind=idx_t), intent(in) :: xadj(:)
+        integer(kind=idx_t), intent(in) :: adjncy(:)
+        integer(kind=idx_t), intent(in), optional :: numflag
+        integer(kind=idx_t), intent(in), optional :: vwgt(:)
+        integer(kind=idx_t), intent(in), optional :: adjwgt(:)
+        integer(kind=idx_t), intent(in), optional :: vsize(:)
 
-        integer :: nvxts, nedgs, ncon, numflag_, i, j, fmt
+        integer(kind=idx_t) :: nvxts, nedgs, ncon, numflag_, i, j, fmt
         character(len=3) :: cfmt
         character(len=11) :: fstring
 
@@ -191,19 +191,19 @@ contains
     subroutine read_graph(unit,xadj,adjncy,numflag,vwgt,adjwgt,vsize)
         implicit none
         integer, intent(in) :: unit
-        integer, intent(out), pointer :: xadj(:)
-        integer, intent(out), pointer :: adjncy(:)
-        integer, intent(in), optional :: numflag
-        integer, pointer, optional :: vwgt(:)
-        integer, intent(out), pointer, optional :: adjwgt(:)
-        integer, intent(out), pointer, optional :: vsize(:)
+        integer(kind=idx_t), intent(out), pointer :: xadj(:)
+        integer(kind=idx_t), intent(out), pointer :: adjncy(:)
+        integer(kind=idx_t), intent(in), optional :: numflag
+        integer(kind=idx_t), pointer, optional :: vwgt(:)
+        integer(kind=idx_t), intent(out), pointer, optional :: adjwgt(:)
+        integer(kind=idx_t), intent(out), pointer, optional :: vsize(:)
 
         character(len=1) :: c
         integer :: ncol, ios, i, rowcol, j
         logical :: lastwhite
 
         character(len=3) :: cfmt
-        integer :: nvtxs, nedgs, ncon, fmt, numflag_
+        integer(kind=idx_t) :: nvtxs, nedgs, ncon, fmt, numflag_
 
         numflag_ = 1 ! Assume Fortran numbering by default
         if (present(numflag)) numflag_ = numflag
@@ -346,23 +346,23 @@ contains
     end subroutine
 
     function FMETIS_MeshToNodal(ne,nn,eptr,eind,numflag,xadj,adjncy,stat) result(ierr)
-        use iso_c_binding, only : c_int, c_ptr, c_f_pointer
-        integer(c_int), intent(in) :: ne
-        integer(c_int), intent(in) :: nn
-        integer(c_int), intent(in) :: eptr(ne+1)
-        integer(c_int), intent(in) :: eind(:)
-        integer(c_int), intent(in) :: numflag
-        integer(c_int), intent(out), allocatable :: xadj(:)
-        integer(c_int), intent(out), allocatable :: adjncy(:)
-        integer(c_int), intent(out), optional :: stat ! stat = 0 indicates successful allocation and correct arguments
+        use iso_c_binding, only : c_ptr, c_f_pointer
+        integer(kind=idx_t), intent(in) :: ne
+        integer(kind=idx_t), intent(in) :: nn
+        integer(kind=idx_t), intent(in) :: eptr(ne+1)
+        integer(kind=idx_t), intent(in) :: eind(:)
+        integer(kind=idx_t), intent(in) :: numflag
+        integer(kind=idx_t), intent(out), allocatable :: xadj(:)
+        integer(kind=idx_t), intent(out), allocatable :: adjncy(:)
+        integer(kind=idx_t), intent(out), optional :: stat ! stat = 0 indicates successful allocation and correct arguments
 
         ! Result
-        integer(c_int) :: ierr
+        integer(kind=idx_t) :: ierr
 
-        integer(c_int) :: stat_
+        integer :: stat_
         character(len=80) :: errmsg_
         type(c_ptr) :: c_xadj, c_adjncy
-        integer(c_int), pointer :: f_xadj(:) => null(), f_adjncy(:) => null()
+        integer(kind=idx_t), pointer :: f_xadj(:) => null(), f_adjncy(:) => null()
 
         ierr = METIS_MeshToNodal(ne,nn,eptr,eind,numflag,c_xadj,c_adjncy)
         if (ierr /= METIS_OK) return
