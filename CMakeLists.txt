@@ -47,22 +47,12 @@ endif()
 
 # Compiler flags for ifort.
 if (CMAKE_Fortran_COMPILER_ID MATCHES Intel)
-    set(common "-warn all")
+    set(common "-warn all -fpp")
     set(CMAKE_Fortran_FLAGS_RELEASE "${common} -O3")
     set(CMAKE_Fortran_FLAGS_DEBUG   "${common} -O0 -g -C -traceback")
 endif ()
 
-# Compiler flags for Cray ftn
-if(CMAKE_Fortran_COMPILER_ID MATCHES Cray)
-  set(common " -h noomp")
-  set(CMAKE_Fortran_FLAGS_RELEASE "${common} -O3")
-  set(CMAKE_Fortran_FLAGS_DEBUG "${common} -O0 -g")
-endif()
-
-# Set the METIS lib path
-# Edit the following line to specify the location manually
-#set(METIS_LIB /usr/local/lib)
-
+# Find METIS library
 if (NOT METIS_LIB)
     find_library(METIS_LIB metis)
 endif ()
@@ -79,7 +69,7 @@ else ()
     message("Fortran compiler flags: ${CMAKE_Fortran_FLAGS_RELEASE}")
 endif ()
 message("Installation prefix: ${CMAKE_INSTALL_PREFIX}")
-message("METIS library location: ${METIS_LIB}")
+
 
 # Library to archive (libfmetis.a)
 add_library(fmetis src/lib/metis_interface.f90 src/lib/metis_oo_interface.f90)
