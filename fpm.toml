@@ -1,0 +1,23 @@
+name = "fmetis"
+version = "0.1.0"
+license = "license"
+author = "Ivan Privec"
+maintainer = "ivan privec"
+copyright = "Copyright 2019, Ivan Privec"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+module-naming = false
+
+external-modules = ["libmetis5", "libmetis-dev"]
+link = ["libmetis5", "libmetis-dev"] 
+
+[install]
+library = false
+
+[fortran]
+implicit-typing = false
+implicit-external = false
+source-form = "free"

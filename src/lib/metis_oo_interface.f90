@@ -118,39 +118,39 @@ contains
         end if
 
 
-        select case(fmt)
-        case(b'000')
+        select case(int(fmt))
+        case(int(b'000'))
             do i = 1, nvxts
                 ! v1 v2 v3 ...
                 write(unit,fstring) (adjncy(j),j=xadj(i),xadj(i+1)-1)
             end do
-        case(b'001') ! edge weights
+        case(int(b'001')) ! edge weights
             do i = 1, nvxts
                 ! v1 e1 v2 e2 ...
                 write(unit,fstring) (adjncy(j),adjwgt(j),j=xadj(i),xadj(i+1)-1)
             end do
-        case(b'010') ! vertex weights
+        case(int(b'010')) ! vertex weights
             do i = 1, nvxts
                 ! w1 w2 ... wncon v1 v2 v3 ...
                 write(unit,fstring) vwgt((i-1)*ncon+1:(i-1)*ncon+ncon),(adjncy(j),j=xadj(i),xadj(i+1)-1)
             end do
-        case(b'100') ! vertex sizes
+        case(int(b'100')) ! vertex sizes
             do i = 1, nvxts
                 write(unit,fstring) vsize(i), (adjncy(j),j=xadj(i),xadj(i+1)-1)
             end do
-        case(b'011')
+        case(int(b'011'))
             do i = 1, nvxts
                 write(unit,fstring) vwgt((i-1)*ncon+1:(i-1)*ncon+ncon), (adjncy(j),adjwgt(j),j=xadj(i),xadj(i+1)-1)
             end do
-        case(b'110')
+        case(int(b'110'))
             do i = 1, nvxts
                 write(unit,fstring) vsize(i), vwgt((i-1)*ncon+1:(i-1)*ncon+ncon),(adjncy(j),j=xadj(i),xadj(i+1)-1)
             end do
-        case(b'101')
+        case(int(b'101'))
             do i = 1, nvxts
                 write(unit,fstring) vsize(i), (adjncy(j),adjwgt(j),j=xadj(i),xadj(i+1)-1)
             end do 
-        case(b'111')
+        case(int(b'111'))
             do i = 1, nvxts
                 write(unit,fstring) vsize(i), vwgt((i-1)*ncon+1:(i-1)*ncon+ncon), (adjncy(j),adjwgt(j),j=xadj(i),xadj(i+1)-1)
             end do
@@ -269,50 +269,50 @@ contains
 
 
         xadj(1) = 0
-        select case(fmt)
-        case (b'000')
+        select case(int(fmt))
+        case (int(b'000'))
             do i = 1, nvtxs
                 rowcol = count_columns(unit,stat=ios)
                 xadj(i+1) = xadj(i) + rowcol
                 read(unit,*) adjncy(xadj(i)+1:xadj(i+1))
             end do
-        case(b'001')
+        case(int(b'001'))
             do i = 1, nvtxs
                 rowcol = count_columns(unit,stat=ios)/2
                 xadj(i+1) = xadj(i) + rowcol
                 read(unit,*) (adjncy(j),adjwgt(j),j=xadj(i)+1,xadj(i+1))
             end do
-        case(b'010')
+        case(int(b'010'))
             do i = 1, nvtxs
                 rowcol = count_columns(unit,stat=ios) - ncon
                 xadj(i+1) = xadj(i) + rowcol
                 read(unit,*) vwgt((i-1)*ncon+1:(i-1)*ncon+ncon), adjncy(xadj(i)+1:xadj(i+1))
             end do
-        case(b'100')
+        case(int(b'100'))
             do i = 1, nvtxs
                 rowcol = count_columns(unit,stat=ios) - 1
                 xadj(i+1) = xadj(i) + rowcol
                 read(unit,*) vsize(i), adjncy(xadj(i)+1:xadj(i+1))
             end do
-        case(b'011')
+        case(int(b'011'))
             do i = 1, nvtxs
                 rowcol = (count_columns(unit,stat=ios) - ncon)/2
                 xadj(i+1) = xadj(i) + rowcol
                 read(unit,*) vwgt((i-1)*ncon+1:(i-1)*ncon+ncon), (adjncy(j),adjwgt(j),j=xadj(i)+1,xadj(i+1))
             end do
-        case(b'110')
+        case(int(b'110'))
             do i = 1, nvtxs
                 rowcol = count_columns(unit,stat=ios) - 1 - ncon
                 xadj(i+1) = xadj(i) + rowcol
                 read(unit,*) vsize(i), vwgt((i-1)*ncon+1:(i-1)*ncon+ncon), adjncy(xadj(i)+1:xadj(i+1))
             end do
-        case(b'101')
+        case(int(b'101'))
             do i = 1, nvtxs
                 rowcol = (count_columns(unit,stat=ios) - 1)/2
                 xadj(i+1) = xadj(i) + rowcol
                 read(unit,*) vsize(i), (adjncy(j),adjwgt(j),j=xadj(i)+1,xadj(i+1))
             end do
-        case(b'111')
+        case(int(b'111'))
             do i = 1, nvtxs
                 rowcol = (count_columns(unit,stat=ios) - 1 - ncon)/2
                 xadj(i+1) = xadj(i) + rowcol
